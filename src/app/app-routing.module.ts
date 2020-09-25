@@ -17,7 +17,7 @@ const routes: Routes = [
         loadChildren: () => import('./theses-list/theses-list.module').then(mod => mod.ThesesListModule),
     },
     {
-        path: 'thesis-details',
+        path: 'thesis-details/:id',
         canActivate: [AuthGuard],
         loadChildren: () => import('./thesis-details/thesis-details.module').then(mod => mod.ThesisDetailsModule),
     },

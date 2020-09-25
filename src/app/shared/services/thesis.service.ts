@@ -15,6 +15,14 @@ export class ThesisService {
     }
 
     addThesis(thesisData: any) {
-        return this.http.post<ThesisDto>(this.url + 'thesis-add', thesisData);
+        return this.http.post<ThesisDto>(this.url + 'thesis', thesisData);
+    }
+
+    getTheses() {
+        return this.http.get<ThesisDto[]>(this.url + 'thesis');
+    }
+
+    getThesis(id: string) {
+        return this.http.get<ThesisDto>(this.url + 'thesis/' + id);
     }
 }
