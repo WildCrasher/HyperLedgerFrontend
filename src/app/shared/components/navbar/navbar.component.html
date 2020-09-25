@@ -1,0 +1,27 @@
+<div class="navbar row">
+    <div *ngIf="authService.userEmail" class="col-6 col-md-5">
+        <div class="row">
+            <div class="user col-8 d-none d-md-block navbar-title">
+                <a [routerLink]="['user']">{{ authService.userEmail }}</a>
+            </div>
+
+            <div class="dropdown show account col-2">
+                <a class="dropdown-toggle" href="#" role="button" id="user-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user user-icon"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-menu-link">
+                    <a class="dropdown-item" [routerLink]="['user']">Konto</a>
+                    <a class="dropdown-item" (click)="logout()">Wyloguj</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!authService.userEmail" class="col-5 text-right">
+        <a [routerLink]="['login']">Zaloguj</a>
+    </div>
+    <div class="col-5 text-right">
+        <a [routerLink]="['thesis-add']">Dodaj pracę dyplomową</a>
+    </div>
+</div>

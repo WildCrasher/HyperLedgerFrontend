@@ -1,0 +1,19 @@
+@import "../../../../constants.scss";
+
+.footer {    
+    border-top: 1px solid $colorMain;
+    padding-top: 0.5em;
+
+    .footer-title {
+        font-weight: bold;
+        margin-bottom: 1em;
+    }
+
+    .footer-items {
+        margin-bottom: 1em;
+    }
+
+    .email {
+        word-break: break-all;
+    }
+}

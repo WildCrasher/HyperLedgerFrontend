@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+.container.container-full-width {
+    max-width: none;
+}
+
+.container.container-content {
+    max-width: none;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+
+    @media(max-width: 700px) {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    @media(max-width: 500px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
