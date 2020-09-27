@@ -9,7 +9,32 @@ import { ThesisService } from '../shared/services/thesis.service';
 })
 export class ThesesListComponent implements OnInit {
 
-    theses = [];
+    theses = [
+        {
+            'thesisNumber': 1,
+            'topic': "aaaa  vvv vvv",
+            'issueDateTime': '111111',
+            'state': 'free',
+            'student': 'brak',
+            'supervisor': 'promotor 1'
+        },
+        {
+            'thesisNumber': 2,
+            'topic': "aaaa  vvv vvv222222sssssssssssssssssssssssssssssssssss",
+            'issueDateTime': '111111',
+            'state': 'free',
+            'student': 'brak',
+            'supervisor': 'promotor 2'
+        },
+        {
+            'thesisNumber': 3,
+            'topic': "aaaa  vvv vvv3333333",
+            'issueDateTime': '111111',
+            'state': 'Reserved',
+            'student': 'Marcin Staszek',
+            'supervisor': 'promotor 3'
+        }
+    ];
 
     constructor(
         private thesisService: ThesisService,
@@ -18,7 +43,7 @@ export class ThesesListComponent implements OnInit {
 
     ngOnInit(): void {
         this.thesisService.getTheses().subscribe((res) => {
-            this.theses = res;
+            // this.theses = res;
         });
     }
 

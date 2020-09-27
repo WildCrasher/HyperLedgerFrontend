@@ -1,5 +1,6 @@
 .container.container-full-width {
     max-width: none;
+    height: 10%;
 }
 
 .container.container-content {
@@ -8,6 +9,7 @@
     padding-right: 8rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+    height: 80%;
 
     @media(max-width: 700px) {
         padding-left: 4rem;
@@ -19,3 +21,5 @@
         padding-right: 2rem;
     }
 }
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

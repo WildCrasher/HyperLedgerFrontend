@@ -1,17 +1,17 @@
 <div class="container">
-    <div class="row">
-        <div class="col-8">
-            <form [formGroup]="addThesisForm" (ngSubmit)="onAddThesis()">
-                <div class="form-control">
-                    <label for="symbol">
-                        Temat pracy dyplomowej
-                    </label>
+    <form [formGroup]="addThesisForm" (ngSubmit)="onAddThesis()">
+        <div class="form-group row">
+            <div class="col-12">
+                <label for="symbol">
+                    Temat pracy dyplomowej
                     <input type="text" formControlName="topic" />
-                </div>
-                <div>
-                    <button type="submit" class="button button-primary" [disabled]="!addThesisForm.valid">Dodaj pracę</button>
-                </div>
-            </form>
+                </label>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="button button-primary" [disabled]="!addThesisForm.valid">Dodaj pracę</button>
+            </div>
+        </div>
+    </form>
 </div>

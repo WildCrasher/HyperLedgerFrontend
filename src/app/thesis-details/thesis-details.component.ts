@@ -9,7 +9,14 @@ import { ThesisService } from '../shared/services/thesis.service';
 })
 export class ThesisDetailsComponent implements OnInit {
 
-    thesis = null;
+    thesis = {
+        'thesisNumber': 1,
+        'topic': "aaaa  vvv vvv",
+        'issueDateTime': '111111',
+        'state': 'free',
+        'student': 'marcin',
+        'supervisor': 'promotor 1'
+    };
 
     constructor(
         private route: ActivatedRoute,
@@ -18,7 +25,7 @@ export class ThesisDetailsComponent implements OnInit {
         this.route.queryParams.subscribe((params) => {
             if(params.id) {
                 this.thesisService.getThesis(params.id).subscribe((res) => {
-                    this.thesis = res;
+                    //this.thesis = res;
                 });
             }
             else {
