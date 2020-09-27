@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "hyper-ledger-app-front"
+    }
+  },
+  "defaultProject": "hyper-ledger-app-front",
+  "cli": {
+    "analytics": false
+  }
 }
