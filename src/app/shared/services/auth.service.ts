@@ -22,9 +22,9 @@ export class AuthService {
 
     private url;
 
-    loginUrl = '/auth/login';
-    registerUrl = '/auth/register';
-    logoutUrl = '/auth/logout';
+    loginUrl = 'auth/login';
+    registerUrl = 'auth/register';
+    logoutUrl = 'auth/logout';
 
     constructor(
         private router: Router,
