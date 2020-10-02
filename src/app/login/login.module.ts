@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-    declarations: [],
+    declarations: [LoginComponent],
     imports: [
         CommonModule,
         RouterModule.forChild([
