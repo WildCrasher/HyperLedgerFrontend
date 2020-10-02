@@ -25,7 +25,10 @@
     <div class="col-2 text-right">
         <a [routerLink]="['theses-list']">Lista prac dyplomowych</a>
     </div>
-    <div *ngIf="!authService.userEmail" class="col-2 text-right">
+    <div *ngIf="!authService.userEmail" class="col-1 text-right">
         <a [routerLink]="['login']">Zaloguj</a>
+    </div>
+    <div *ngIf="!authService.userEmail" class="col-1 text-right">
+        <a [routerLink]="['register']">Rejestracja</a>
     </div>
 </div>

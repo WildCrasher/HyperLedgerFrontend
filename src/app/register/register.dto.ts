@@ -1,11 +1,8 @@
-export interface RegisterDto {
-    username: string;
+export class RegisterDtoImpl {
+    name: string;
     password: string;
-}
-
-export class RegisterDtoImpl implements RegisterDto {
-    username: string;
-    password: string;
+    matchingPassword: string;
+    role: string;
 
     constructor(init?: RegisterDtoImpl) {
         Object.assign(this, init);
