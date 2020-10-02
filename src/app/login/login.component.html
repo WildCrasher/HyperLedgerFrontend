@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="form-group row">
+            <div class="col-12">
+                <label for="symbol">
+                    Nazwa uzytkownika
+                    <input type="text" formControlName="username" />
+                </label>
+            </div>
+            <div class="col-12">
+                <label for="symbol">
+                    Haslo
+                    <input type="text" formControlName="password" />
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="button button-primary" [disabled]="!loginForm.valid">Zaloguj</button>
+            </div>
+        </div>
+    </form>
+</div>

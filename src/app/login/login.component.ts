@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -7,34 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-    constructor() { }
+    loginForm: FormGroup;
+
+    constructor(
+        private fb: FormBuilder,
+        private authService: AuthService,
+        private router: Router,
+    ) { }
 
     ngOnInit(): void {
     }
 
     onLogin() {
-        // if (this.loginForm.valid) {
-        //     this.authService.login(this.loginForm.value).subscribe(resp => {
-
-        //         localStorage.setItem('xsgmkhr7ysm8svrds6355kc9k72t5htd', (resp.agreements_accepted).toString());
-        //         localStorage.setItem('auth_key', resp['auth_key']);
-        //         if(resp.last_login) {
-        //             this.router.navigateByUrl('/dashboard');
-        //         } else {
-        //             const navigationExtras: NavigationExtras = {
-        //                 state: {
-        //                     serviceResponse: {
-        //                         success: true,
-        //                         message: this.translateService.instant('Login.firstLogin'),
-        //                     }
-        //                 }
-        //             };
-
-        //             this.router.navigate(['user'], navigationExtras);
-        //         }
-        //     }, (err) => {
-        //         this.loginError = true;
-        //     });
-        // }
+        if (this.loginForm.valid) {
+            this.authService.login(this.loginForm.value).subscribe(resp => {
+                localStorage.setItem('auth_key', resp['auth_key']);
+                this.router.navigate(['add-thesis']);
+            }, (err) => {
+                //TODO
+                console.log('ERROR');
+            });
+        }
     }
 }
