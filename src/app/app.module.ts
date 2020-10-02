@@ -9,8 +9,9 @@ import { ThesesListModule } from './theses-list/theses-list.module';
 import { ThesisDetailsModule } from './thesis-details/thesis-details.module';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { AuthInterceptor } from './shared/interceptors/auth-interceptor';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -30,7 +31,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         HttpClientModule,
         NgbModule,
     ],
-    providers: [],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

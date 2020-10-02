@@ -42,12 +42,11 @@ export class AuthService {
     }
 
     logout(navigationExtras: NavigationExtras = {}): boolean {
-        // this.http.post(this.url + this.logoutUrl, { token: localStorage.getItem('auth_key') }).subscribe((res) => {
-        //     localStorage.removeItem('auth_key');
-        //     localStorage.removeItem('xsgmkhr7ysm8svrds6355kc9k72t5htd'); // Zgody zaakceptowane
-        //     this.router.navigate([navigationExtras.state ? '/login' : '/'], navigationExtras);
-        //     return true;
-        // });
+        this.http.post(this.url + this.logoutUrl, { token: localStorage.getItem('auth_key') }).subscribe((res) => {
+            localStorage.removeItem('auth_key');
+            this.router.navigate(['login']);
+            return true;
+        });
         return false;
     }
 

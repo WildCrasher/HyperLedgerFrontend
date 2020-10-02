@@ -1,10 +1,10 @@
 export interface RegisterDto {
-    email: string;
+    username: string;
     password: string;
 }
 
 export class RegisterDtoImpl implements RegisterDto {
-    email: string;
+    username: string;
     password: string;
 
     constructor(init?: RegisterDtoImpl) {
