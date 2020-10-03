@@ -29,10 +29,10 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.valid) {
             this.authService.login(this.loginForm.value).subscribe(resp => {
                 localStorage.setItem('auth_key', resp['auth_key']);
-                this.router.navigate(['add-thesis']);
+                this.router.navigate(['thesis-add']);
             }, (err) => {
                 //TODO
-                console.log('ERROR');
+                console.log('ERROR', err);
             });
         }
     }
