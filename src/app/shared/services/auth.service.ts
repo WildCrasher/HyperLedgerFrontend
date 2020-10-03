@@ -22,7 +22,7 @@ export class AuthService {
 
     private url;
 
-    loginUrl = 'auth/login';
+    loginUrl = 'login';
     registerUrl = 'auth/register';
     logoutUrl = 'auth/logout';
 
