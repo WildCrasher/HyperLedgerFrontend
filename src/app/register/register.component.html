@@ -1,1 +1,29 @@
-<p>register works!</p>
+<form [formGroup]="registerForm">
+  
+    <label>
+        Nazwa użytkownika:
+        <input type="text" formControlName="name">
+    </label>
+
+    <div formGroupName="passwordGroup">
+        <label>
+            Hasło:
+            <input type="password" formControlName="password">
+        </label>
+        <label>
+            Potwierdź hasło:
+            <input type="password" formControlName="matchingPassword">
+        </label>
+    </div>
+
+    <label>
+        Rola:
+        <select formControlName="role">
+            <option value="supervisor">Promotor</option>
+            <option value="student">Student</option>
+        </select>
+    </label>
+
+    <button type="button" (click)="submit()">Zarejestruj się</button>
+  
+  </form>
