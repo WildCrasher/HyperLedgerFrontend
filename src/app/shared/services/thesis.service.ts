@@ -10,6 +10,10 @@ export class ThesisService {
 
     private url;
 
+    addThesisUrl = 'api/thesis';
+    getThesesUrl = 'api/thesis';
+    getThesisUrl = 'api/thesis/';
+
     constructor(private http: HttpClient) {
         this.url = environment.backendUrl;
     }
@@ -20,16 +24,16 @@ export class ThesisService {
     // }
 
     addThesis(thesisData: any) {
-        return this.http.post<ThesisDto>(this.url + 'thesis', thesisData);
+        return this.http.post<ThesisDto>(this.url + this.addThesisUrl, thesisData);
     }
 
     getTheses() {
         // let headers = new HttpHeaders();
         // this.createAuthorizationHeader(headers);
-        return this.http.get<ThesisDto[]>(this.url + 'thesis'/*, {headers: headers}*/);
+        return this.http.get<ThesisDto[]>(this.url + this.getThesesUrl/*, {headers: headers}*/);
     }
 
     getThesis(id: string) {
-        return this.http.get<ThesisDto>(this.url + 'thesis/' + id);
+        return this.http.get<ThesisDto>(this.url + this.getThesisUrl + id);
     }
 }
