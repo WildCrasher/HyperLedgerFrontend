@@ -8,11 +8,7 @@ import { environment } from './../../../environments/environment';
 import * as jwt_decode from 'jwt-decode';
 
 export interface IDecodedUser {
-    email: string;
-    sub: number;
-    roles: any;
-    iat: number;
-    expr: number;
+    username: string;
 }
 
 @Injectable({
@@ -59,10 +55,10 @@ export class AuthService {
         }
     }
 
-    get userEmail() {
+    get username() {
         const tokenInfo = this.decodedAccessToken;
         if(tokenInfo) {
-            return tokenInfo.email;
+            return tokenInfo.username;
         }
         return null;
     }
