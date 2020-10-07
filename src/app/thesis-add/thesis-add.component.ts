@@ -18,7 +18,8 @@ export class ThesisAddComponent implements OnInit {
 
     ngOnInit(): void {
         this.addThesisForm = this.fb.group({
-            topic: ['', [Validators.required, Validators.minLength(10)]],
+            topic: ['', [Validators.required, Validators.minLength(5)]],
+            thesisNumber: ['', Validators.required]
         });
     }
 

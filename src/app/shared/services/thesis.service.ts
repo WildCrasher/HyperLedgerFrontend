@@ -30,7 +30,7 @@ export class ThesisService {
     getTheses() {
         // let headers = new HttpHeaders();
         // this.createAuthorizationHeader(headers);
-        return this.http.get<ThesisDto[]>(this.url + this.getThesesUrl/*, {headers: headers}*/);
+        return this.http.get<any>(this.url + this.getThesesUrl/*, {headers: headers}*/);
     }
 
     getThesis(id: string) {

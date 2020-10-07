@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ThesisDto } from '../shared/dtos/thesis.dto';
 import { ThesisService } from '../shared/services/thesis.service';
 
 @Component({
@@ -9,23 +10,18 @@ import { ThesisService } from '../shared/services/thesis.service';
 })
 export class ThesisDetailsComponent implements OnInit {
 
-    thesis = {
-        'thesisNumber': 1,
-        'topic': "aaaa  vvv vvv",
-        'issueDateTime': '111111',
-        'state': 'free',
-        'student': 'marcin',
-        'supervisor': 'promotor 1'
-    };
+    thesis: ThesisDto;
 
     constructor(
         private route: ActivatedRoute,
         private thesisService: ThesisService,
     ) {
         this.route.queryParams.subscribe((params) => {
+            console.log(params);
             if(params.id) {
                 this.thesisService.getThesis(params.id).subscribe((res) => {
-                    //this.thesis = res;
+                    console.log(res);
+                    this.thesis = res;
                 });
             }
             else {
