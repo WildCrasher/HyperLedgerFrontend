@@ -16,10 +16,10 @@ export class ThesisDetailsComponent implements OnInit {
         private route: ActivatedRoute,
         private thesisService: ThesisService,
     ) {
-        this.route.queryParams.subscribe((params) => {
+        this.route.paramMap.subscribe((params) => {
             console.log(params);
-            if(params.id) {
-                this.thesisService.getThesis(params.id).subscribe((res) => {
+            if(params.get('id')) {
+                this.thesisService.getThesis(params.get('id')).subscribe((res) => {
                     console.log(res);
                     this.thesis = res;
                 });
