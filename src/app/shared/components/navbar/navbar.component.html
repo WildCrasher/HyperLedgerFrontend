@@ -1,37 +1,30 @@
 <div class="navbar row">
     <div *ngIf="authService.username" class="col-6 col-md-5">
         <div class="row">
-            <div class="user col-8 d-none d-md-block navbar-title">
-                <a [routerLink]="['user']">{{ authService.username }}</a>
-            </div>
-
-            <div class="dropdown show account col-2">
-                <a class="dropdown-toggle" href="#" role="button" id="user-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user user-icon"></i>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-menu-link">
-                    <a class="dropdown-item" [routerLink]="['user']">Konto</a>
-                    <a class="dropdown-item" (click)="logout()">Wyloguj</a>
-                </div>
+            <div class="user col-7 d-none d-md-block navbar-title">
+                {{ authService.username }}
             </div>
         </div>
     </div>
 
-    
-    <div class="col-2 text-right">
-        <a [routerLink]="['thesis-add']">Dodaj pracę dyplomową</a>
-    </div>
-    <div class="col-2 text-right">
-        <a [routerLink]="['theses-list']">Lista prac dyplomowych</a>
-    </div>
-    <div *ngIf="!authService.username" class="col-1 text-right">
-        <a [routerLink]="['login']">Zaloguj</a>
-    </div>
-    <div *ngIf="!authService.username" class="col-1 text-right">
-        <a [routerLink]="['register']">Rejestracja</a>
-    </div>
-    <div *ngIf="!authService.username" class="col-1 text-right">
-        <button (click)="logout()">Wyloguj</button>
-    </div>
+    <div *ngIf="authService.username; then thenBLock else elseBlock"></div>
+    <ng-template #thenBLock>
+        <div class="col-2 text-right">
+            <a [routerLink]="['thesis-add']">Dodaj pracę dyplomową</a>
+        </div>
+        <div class="col-2 text-right">
+            <a [routerLink]="['theses-list']">Lista prac dyplomowych</a>
+        </div>
+        <div class="col-1 text-right">
+            <a [routerLink]="" (click)="logout()">Wyloguj</a>
+        </div>
+    </ng-template>
+    <ng-template #elseBlock>
+        <div class="col-1 text-right">
+            <a [routerLink]="['login']">Zaloguj</a>
+        </div>
+        <div class="col-1 text-right">
+            <a [routerLink]="['register']">Rejestracja</a>
+        </div>
+    </ng-template>
 </div>

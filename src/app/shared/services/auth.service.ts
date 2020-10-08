@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { LoginDtoImpl } from '../dtos/login.dto';
 import { RegisterDtoImpl } from './../../register/register.dto';
 import { environment } from './../../../environments/environment';
-import * as jwt_decode from 'jwt-decode';
+ // @ts-ignore  
+import jwt_decode from 'jwt-decode';
 
 export interface IDecodedUser {
     username: string;
