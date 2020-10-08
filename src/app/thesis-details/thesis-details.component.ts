@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ThesisDto } from '../shared/dtos/thesis.dto';
+import { AuthService } from '../shared/services/auth.service';
 import { ThesisService } from '../shared/services/thesis.service';
 
 @Component({
@@ -15,13 +16,12 @@ export class ThesisDetailsComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private thesisService: ThesisService,
+        private authService: AuthService
     ) {
         this.route.paramMap.subscribe((params) => {
-            console.log(params);
             if(params.get('id')) {
                 this.thesisService.getThesis(params.get('id')).subscribe((res) => {
-                    console.log(res);
-                    this.thesis = res;
+                    this.thesis = JSON.parse(res);
                 });
             }
             else {
@@ -31,6 +31,15 @@ export class ThesisDetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log(this.authService.userRole);
+    }
+
+    get isStudent(): boolean {
+        return this.authService.userRole == "student";
+    }
+
+    get isSupervisor(): boolean {
+        return this.authService.userRole == "supervisor";
     }
 
 }

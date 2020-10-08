@@ -10,6 +10,7 @@ import jwt_decode from 'jwt-decode';
 
 export interface IDecodedUser {
     username: string;
+    role: string;
 }
 
 @Injectable({
@@ -56,10 +57,18 @@ export class AuthService {
         }
     }
 
-    get username() {
+    get username(): string {
         const tokenInfo = this.decodedAccessToken;
         if(tokenInfo) {
             return tokenInfo.username;
+        }
+        return null;
+    }
+
+    get userRole(): string {
+        const tokenInfo = this.decodedAccessToken;
+        if(tokenInfo) {
+            return tokenInfo.role;
         }
         return null;
     }

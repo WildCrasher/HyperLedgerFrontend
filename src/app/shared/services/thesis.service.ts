@@ -34,6 +34,6 @@ export class ThesisService {
     }
 
     getThesis(id: string) {
-        return this.http.get<ThesisDto>(this.url + this.getThesisUrl + id);
+        return this.http.get<any>(this.url + this.getThesisUrl + id);
     }
 }
