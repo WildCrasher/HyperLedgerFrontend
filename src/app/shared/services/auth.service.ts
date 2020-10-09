@@ -21,7 +21,6 @@ export class AuthService {
 
     loginUrl = 'login';
     registerUrl = 'auth/register';
-    logoutUrl = 'auth/logout';
 
     constructor(
         private router: Router,
@@ -38,13 +37,9 @@ export class AuthService {
         return this.http.post(this.url + this.registerUrl, registerDtoImpl);
     }
 
-    logout(navigationExtras: NavigationExtras = {}): boolean {
-        this.http.post(this.url + this.logoutUrl, { token: localStorage.getItem('auth_key') }).subscribe((res) => {
-            localStorage.removeItem('auth_key');
-            this.router.navigate(['login']);
-            return true;
-        });
-        return false;
+    logout(navigationExtras: NavigationExtras = {}) {
+        localStorage.removeItem('auth_key');
+        this.router.navigate(['login']);
     }
 
     get decodedAccessToken(): IDecodedUser {
