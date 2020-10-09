@@ -19,7 +19,7 @@
             Promotor
         </div>
     </div>
-    <div class="row">
+    <div *ngIf="thesis" class="row">
         <div class="col-2">
             {{thesis.thesisNumber}}
         </div>
@@ -37,6 +37,12 @@
         </div>
         <div class="col-2">
             {{thesis.supervisor}}
+        </div>
+        <div *ngIf="isStudent">
+            <button (click)="assign()">Wybierz tę pracę</button>
+        </div>
+        <div *ngIf="isSupervisor && thesis.student!=' '">
+            <button (click)="assign()">Zatwierdź przypisanie pracy do studenta</button>
         </div>
     </div>
 </div>
