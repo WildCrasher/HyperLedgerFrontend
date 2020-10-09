@@ -17,7 +17,9 @@ export class ThesisDetailsComponent implements OnInit {
         private route: ActivatedRoute,
         private thesisService: ThesisService,
         private authService: AuthService
-    ) {
+    ) {}
+
+    ngOnInit(): void {
         this.route.paramMap.subscribe((params) => {
             if(params.get('id')) {
                 this.thesisService.getThesis(params.get('id')).subscribe((res) => {
@@ -28,9 +30,6 @@ export class ThesisDetailsComponent implements OnInit {
                 console.log('ERROR');
             }
         });
-    }
-
-    ngOnInit(): void {
     }
 
     get isStudent(): boolean {
@@ -44,12 +43,14 @@ export class ThesisDetailsComponent implements OnInit {
     assign() {
         this.thesisService.assignStudent(this.thesis.thesisNumber).subscribe(res => {
             console.log(res);
+            this.ngOnInit();
         });
     }
 
     approve() {
         this.thesisService.approveThesis(this.thesis.thesisNumber).subscribe(res => {
             console.log(res);
+            this.ngOnInit();
         })
     }
 
