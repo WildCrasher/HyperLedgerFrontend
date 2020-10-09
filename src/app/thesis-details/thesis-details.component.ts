@@ -31,7 +31,6 @@ export class ThesisDetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.authService.userRole);
     }
 
     get isStudent(): boolean {
@@ -40,6 +39,18 @@ export class ThesisDetailsComponent implements OnInit {
 
     get isSupervisor(): boolean {
         return this.authService.userRole == "supervisor";
+    }
+
+    assign() {
+        this.thesisService.assignStudent(this.thesis.thesisNumber).subscribe(res => {
+            console.log(res);
+        });
+    }
+
+    approve() {
+        this.thesisService.approveThesis(this.thesis.thesisNumber).subscribe(res => {
+            console.log(res);
+        })
     }
 
 }

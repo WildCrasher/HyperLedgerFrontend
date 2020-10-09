@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ThesisService } from './../shared/services/thesis.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class ThesisAddComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private thesisService: ThesisService,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -27,6 +29,7 @@ export class ThesisAddComponent implements OnInit {
         if(this.addThesisForm.valid) {
             this.thesisService.addThesis(this.addThesisForm.value).subscribe((res) => {
                 console.log(res);
+                this.router.navigate(['theses-list']);
             });
         }
     }
