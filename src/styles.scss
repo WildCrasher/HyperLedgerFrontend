@@ -1,15 +1,21 @@
 .container.container-full-width {
     max-width: none;
     height: 10%;
+    background-color: #bee2ed;
 }
 
 .container.container-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     max-width: none;
     padding-left: 8rem;
     padding-right: 8rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     height: 80%;
+    background-color: #bee2ed;
 
     @media(max-width: 700px) {
         padding-left: 4rem;
@@ -21,5 +27,29 @@
         padding-right: 2rem;
     }
 }
+
+html, body {
+    height: 100%;
+}
+
+.button-primary {
+    color: white;
+    background-color: #036a94;
+    border-radius: 20px;
+    width: 200px;
+    padding: 5px;
+
+    &:hover {
+        background-color: #478dB7;
+        color: white;
+    }
+}
+
+input, select {
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

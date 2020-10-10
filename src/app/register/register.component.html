@@ -1,29 +1,49 @@
-<form [formGroup]="registerForm">
-  
-    <label>
-        Nazwa użytkownika:
-        <input type="text" formControlName="name">
-    </label>
-
-    <div formGroupName="passwordGroup">
-        <label>
-            Hasło:
-            <input type="password" formControlName="password">
-        </label>
-        <label>
-            Potwierdź hasło:
-            <input type="password" formControlName="matchingPassword">
-        </label>
+<div class="container">
+    <div class="row main-text">
+        Tworzenie konta
     </div>
-
-    <label>
-        Rola:
-        <select formControlName="role">
-            <option value="supervisor">Promotor</option>
-            <option value="student">Student</option>
-        </select>
-    </label>
-
-    <button type="button" (click)="submit()">Zarejestruj się</button>
-  
-  </form>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class="form-group row">
+            <div class="col-6">
+                <label>Nazwa użytkownika</label>
+            </div>
+            <div class="col-6">
+                <input type="text" formControlName="name">
+            </div>
+        </div>
+        <div formGroupName="passwordGroup">
+            <div class="form-group row">
+                <div class="col-6">
+                    <label>Hasło</label>
+                </div>
+                <div class="col-6">
+                    <input type="password" formControlName="password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <label>Potwierdź hasło</label>
+                </div>
+                <div class="col-6">
+                    <input type="password" formControlName="matchingPassword">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
+                <label>Rola</label>
+            </div>
+            <div class="col-6">
+                <select formControlName="role">
+                    <option value="supervisor">Promotor</option>
+                    <option value="student">Student</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 submit-container">
+                <button type="submit" class="button button-primary" [disabled]="!registerForm.valid">Zarejestruj się</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -4,76 +4,7 @@
     border-bottom: 1px solid $colorMain;
     padding: 0.25rem 0.5rem;
 
-    .dropdown-menu {
-        border-top: none;
-        margin-top: 0.25rem; // zależne od pionowego paddingu przy navbarze
-
-        &.dropdown-menu-left {
-            margin-left: -0.5rem;
-        }
-
-        &.dropdown-menu-right {
-            margin-right: -0.5rem;
-        }
-    }
-
-    .logo {
-        padding: 0.5rem 1rem;
-
-        img {
-            width: 48px;
-        }
-    }
-
-    #main-menu-link:after {
-        border-top: 0.75em solid;
-        border-right: 0.75em solid transparent;
-        border-left: 0.75em solid transparent;
-        transform: translate(0, 200%);
-    }
-
-    #user-menu-link {
-
-        .user-icon {
-            font-size: 2.3em;
-            text-align: center;
-            border: $colorMain solid 3px;
-            border-radius: 1000px;
-            width: 46px;
-        }
-
-        &:after {
-            content: none;
-        }
-    }
-
-    .lang {
-        margin-top: auto;
-        margin-bottom: auto;
-        text-align: right;
-
-        select {
-            background-color: $colorWhite;
-            color: $colorMain;
-
-            &:focus, &:active {
-                box-shadow: none;
-            }
-        }
-    }
-
-    .user {
-        text-transform: uppercase;
-        text-align: right;
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-
-    .account {
-        text-align: right;
-    }
-
-    .navbar-title {
-        font-size: 1.4rem;
-    }
+   a {
+       color: #036a94;
+   }
 }

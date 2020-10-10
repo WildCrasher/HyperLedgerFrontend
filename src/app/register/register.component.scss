@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 120px;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 100%;
+}
+
+label {
+    width: 100%;
+    text-align: end;
+    padding-right: 40px;
+}
+
+.margin-bottom {
+    margin-bottom: 40px;
+}
+
+.main-text {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px;
+    margin: auto;
+}
