@@ -1,13 +1,20 @@
-.container.container-full-width {
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 120px;
+}
+
+.container-full-width {
     max-width: none;
     height: 10%;
     background-color: #bee2ed;
 }
 
-.container.container-content {
+.container-content {
     display: flex;
     justify-content: center;
-    align-items: center;
     
     max-width: none;
     padding-left: 8rem;
@@ -48,6 +55,18 @@ html, body {
 input, select {
     border: none;
     border-radius: 10px;
+    width: 100%;
+    background-color: white;
+    height: 30px;
+}
+
+label {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+form {
     width: 100%;
 }
 

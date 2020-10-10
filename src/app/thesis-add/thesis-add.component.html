@@ -1,23 +1,26 @@
 <div class="container">
+    <div class="row main-text">
+        Dodawanie pracy
+    </div>
     <form [formGroup]="addThesisForm" (ngSubmit)="onAddThesis()">
         <div class="form-group row">
-            <div class="col-12">
-                <label for="symbol">
-                    Temat pracy dyplomowej
-                    <input type="text" formControlName="topic" />
-                </label>
+            <div class="col-6">
+                <label>Temat pracy dyplomowej</label>
+            </div>
+            <div class="col-6">
+                <input type="text" formControlName="topic" />
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-12">
-                <label>
-                    Numer pracy
-                    <input type="text" formControlName="thesisNumber" />
-                </label>
+        <div class="form-group row margin-bottom">
+            <div class="col-6">
+                <label>Numer pracy</label>
+            </div>
+            <div class="col-6">
+                <input type="text" formControlName="thesisNumber" />
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 submit-container">
                 <button type="submit" class="button button-primary" [disabled]="!addThesisForm.valid">Dodaj pracę</button>
             </div>
         </div>
