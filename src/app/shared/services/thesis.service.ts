@@ -31,7 +31,7 @@ export class ThesisService {
     // }
 
     addThesis(thesisData: any) {
-        return this.http.post<ThesisDto>(this.url + this.addThesisUrl, thesisData);
+        return this.http.post<string>(this.url + this.addThesisUrl, thesisData);
     }
 
     getTheses() {
