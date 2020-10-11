@@ -9,6 +9,7 @@
             </div>
             <div class="col-6">
                 <input type="text" formControlName="name">
+                <app-input-message [input]="registerForm.get('name')"></app-input-message>
             </div>
         </div>
         <div formGroupName="passwordGroup">
@@ -18,6 +19,7 @@
                 </div>
                 <div class="col-6">
                     <input type="password" formControlName="password">
+                    <app-input-message [input]="registerForm.get('passwordGroup').get('password')"></app-input-message>
                 </div>
             </div>
             <div class="form-group row">
@@ -26,6 +28,7 @@
                 </div>
                 <div class="col-6">
                     <input type="password" formControlName="matchingPassword">
+                    <app-input-message [input]="registerForm.get('passwordGroup').get('matchingPassword')"></app-input-message>
                 </div>
             </div>
         </div>
@@ -38,6 +41,7 @@
                     <option value="supervisor">Promotor</option>
                     <option value="student">Student</option>
                 </select>
+                <app-input-message [input]="registerForm.get('role')"></app-input-message>
             </div>
         </div>
         <div class="row">

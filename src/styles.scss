@@ -1,3 +1,5 @@
+@import "./constants.scss";
+
 .container {
     display: flex;
     justify-content: center;
@@ -41,13 +43,13 @@ html, body {
 
 .button-primary {
     color: white;
-    background-color: #036a94;
+    background-color: $colorBlue;
     border-radius: 20px;
     width: 200px;
     padding: 5px;
 
     &:hover {
-        background-color: #478dB7;
+        background-color: $lightBlue;
         color: white;
     }
 }

@@ -5,18 +5,20 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <div class="form-group row">
             <div class="col-6">
-                <label>Nazwa uzytkownika</label>
+                <label>Nazwa użytkownika</label>
             </div>
             <div class="col-6">
                 <input type="text" formControlName="name" />
+                <app-input-message [input]="loginForm.get('name')"></app-input-message>
             </div>
         </div>
         <div class="form-group row margin-bottom">
             <div class="col-6">
-                <label>Haslo</label>
+                <label>Hasło</label>
             </div>
             <div class="col-6">
                 <input type="password" formControlName="password" />
+                <app-input-message [input]="loginForm.get('password')"></app-input-message>
             </div>
         </div>
         <div class="row">
