@@ -15,6 +15,8 @@ import { SharedModule } from '../shared/shared.module';
                 component: RegisterComponent,
             }
         ]),
+        FormsModule,
+        ReactiveFormsModule,
         SharedModule,
     ]
 })

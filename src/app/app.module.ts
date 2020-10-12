@@ -8,9 +8,9 @@ import { RegisterModule } from './register/register.module';
 import { ThesesListModule } from './theses-list/theses-list.module';
 import { ThesisDetailsModule } from './thesis-details/thesis-details.module';
 import { AuthInterceptor } from './shared/interceptors/auth-interceptor';
-import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -23,9 +23,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         RegisterModule,
         ThesesListModule,
         ThesisDetailsModule,
-        SharedModule,
         HttpClientModule,
         NgbModule,
+        SharedModule,
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

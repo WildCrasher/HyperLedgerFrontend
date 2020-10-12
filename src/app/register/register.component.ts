@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
                 dto.password = values.passwordGroup.password;
                 dto.matchingPassword = values.passwordGroup.matchingPassword;
                 dto.role = values.role;
-                
                 this.authService.register(dto).subscribe(res => {
                     console.log(res);
                     this.router.navigate(['']);
@@ -55,6 +54,7 @@ export class RegisterComponent implements OnInit {
         }
     }
 
+    //nie poakzywalo komunikatu, jak umiesz to szybko zmien na uzywanie swojej funkcji
     checkPasswords(group: FormGroup) {
         let pass = group.get('password').value;
         let confirmPass = group.get('matchingPassword').value;

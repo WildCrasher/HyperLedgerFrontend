@@ -28,6 +28,7 @@ export class ThesisAddComponent implements OnInit {
     onAddThesis() {
         if(this.addThesisForm.valid) {
             this.thesisService.addThesis(this.addThesisForm.value).subscribe((res) => {
+                this.router.navigate(['theses-list']);
                 if(res == 'success') {
                     this.router.navigate(['theses-list']);
                 }

@@ -25,18 +25,11 @@ export class ThesisService {
         this.url = environment.backendUrl;
     }
 
-    // createAuthorizationHeader(headers: HttpHeaders) {
-    //     headers.append('Content-Type', 'application/json');
-    //     headers.append('Access-Control-Allow-Origin', 'true')
-    // }
-
     addThesis(thesisData: any) {
         return this.http.post<string>(this.url + this.addThesisUrl, thesisData);
     }
 
     getTheses() {
-        // let headers = new HttpHeaders();
-        // this.createAuthorizationHeader(headers);
         return this.http.get<any>(this.url + this.getThesesUrl/*, {headers: headers}*/);
     }
 

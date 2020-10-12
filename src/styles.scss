@@ -42,7 +42,7 @@ html, body {
 }
 
 .button-primary {
-    color: white;
+    color: $colorWhite;
     background-color: $colorBlue;
     border-radius: 20px;
     width: 200px;
@@ -50,7 +50,7 @@ html, body {
 
     &:hover {
         background-color: $lightBlue;
-        color: white;
+        color: $colorWhite;
     }
 }
 
@@ -58,7 +58,7 @@ input, select {
     border: none;
     border-radius: 10px;
     width: 100%;
-    background-color: white;
+    background-color: $colorWhite;
     height: 30px;
 }
 
