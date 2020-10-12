@@ -8,7 +8,6 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
     declarations: [ThesisAddComponent],
     imports: [
-        CommonModule,
         RouterModule.forChild([
             {
                 path: '',
