@@ -11,10 +11,14 @@ import { AuthInterceptor } from './shared/interceptors/auth-interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        NavbarComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,
@@ -25,7 +29,6 @@ import { SharedModule } from './shared/shared.module';
         ThesisDetailsModule,
         HttpClientModule,
         NgbModule,
-        SharedModule,
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
