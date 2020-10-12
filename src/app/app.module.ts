@@ -7,18 +7,14 @@ import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { ThesesListModule } from './theses-list/theses-list.module';
 import { ThesisDetailsModule } from './thesis-details/thesis-details.module';
-import { FooterComponent } from './shared/components/footer/footer.component';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { AuthInterceptor } from './shared/interceptors/auth-interceptor';
-import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavbarComponent,
-        FooterComponent
     ],
     imports: [
         BrowserModule,
@@ -27,9 +23,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         RegisterModule,
         ThesesListModule,
         ThesisDetailsModule,
-        SharedModule,
         HttpClientModule,
         NgbModule,
+        SharedModule,
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

@@ -3,7 +3,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginDtoImpl } from '../dtos/login.dto';
-import { RegisterDtoImpl } from './../../register/register.dto';
+import { RegisterDtoImpl } from '../dtos/register.dto';
 import { environment } from './../../../environments/environment';
  // @ts-ignore  
 import jwt_decode from 'jwt-decode';

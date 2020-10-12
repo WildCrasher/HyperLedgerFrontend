@@ -1,0 +1,6 @@
+<div class="form-error" *ngIf="(input.dirty || input.touched)">
+    <span *ngIf="input.hasError('required')">To pole jest wymagane</span>
+    <span *ngIf="input.hasError('email')">Podany email ma niewłaściwy format</span>
+    <span *ngIf="input.hasError('invalidPassword') && !input.hasError('required')">Wpisane hasło nie spełnia odpowiednich wymagań</span>
+    <span *ngIf="input.hasError('notEqual')">Podane hasła nie są identyczne</span>    
+</div>
