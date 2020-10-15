@@ -43,6 +43,10 @@ export class AuthService {
         this.router.navigate(['login']);
     }
 
+    get isLoggedIn() {
+        return this.username ? true : false;
+    }
+
     get decodedAccessToken(): IDecodedUser {
         const token = localStorage.getItem('auth_key');
         try {

@@ -47,6 +47,7 @@ html, body {
     border-radius: 20px;
     width: 200px;
     padding: 5px;
+    cursor: pointer;
 
     &:hover {
         background-color: $lightBlue;

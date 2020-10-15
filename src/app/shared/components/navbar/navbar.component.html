@@ -9,7 +9,7 @@
 
     <div *ngIf="authService.username; then thenBLock else elseBlock"></div>
     <ng-template #thenBLock>
-        <div *ngIf="authService.userRole == supervisor" class="col-2 text-right">
+        <div *ngIf="authService.userRole == 'supervisor'" class="col-2 text-right">
             <a [routerLink]="['thesis-add']">Dodaj pracę dyplomową</a>
         </div>
         <div class="col-2 text-right">

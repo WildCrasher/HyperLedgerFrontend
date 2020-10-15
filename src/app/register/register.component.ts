@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
     onRegister() {
         if(this.registerForm.valid) {
-            if(this.registerForm.get('password').value === this.registerForm.get('matchingPassword').value) {
+            if(this.registerForm.get('passwordGroup').get('password').value === this.registerForm.get('passwordGroup').get('matchingPassword').value) {
                 const values = this.registerForm.value;
 
                 const dto: RegisterDtoImpl = new RegisterDtoImpl();
