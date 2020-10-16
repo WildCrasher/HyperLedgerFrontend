@@ -46,7 +46,7 @@
         </div>
         <div class="row">
             <div class="col-12 submit-container">
-                <button type="submit" class="button button-primary" [disabled]="!registerForm.valid">Zarejestruj się</button>
+                <button type="submit" class="button button-primary" [disabled]="!registerForm.valid" [class.spinner]="loading">Zarejestruj się</button>
             </div>
         </div>
     </form>

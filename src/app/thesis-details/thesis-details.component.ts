@@ -12,11 +12,12 @@ import { ThesisService } from '../shared/services/thesis.service';
 export class ThesisDetailsComponent implements OnInit {
 
     thesis: ThesisDto;
+    loading = false;
 
     constructor(
         private route: ActivatedRoute,
         private thesisService: ThesisService,
-        private authService: AuthService
+        private authService: AuthService,
     ) {}
 
     ngOnInit(): void {
@@ -24,10 +25,12 @@ export class ThesisDetailsComponent implements OnInit {
             if(params.get('id')) {
                 this.thesisService.getThesis(params.get('id')).subscribe((res) => {
                     this.thesis = JSON.parse(res);
+                    this.loading = false;
                 });
             }
             else {
                 console.log('ERROR');
+                this.loading = false;
             }
         });
     }
@@ -41,6 +44,7 @@ export class ThesisDetailsComponent implements OnInit {
     }
 
     assign() {
+        this.loading = true;
         this.thesisService.assignStudent(this.thesis.thesisNumber).subscribe(res => {
             console.log(res);
             this.ngOnInit();
@@ -48,10 +52,18 @@ export class ThesisDetailsComponent implements OnInit {
     }
 
     approve() {
+        this.loading = true;
         this.thesisService.approveThesis(this.thesis.thesisNumber).subscribe(res => {
             console.log(res);
             this.ngOnInit();
         })
     }
 
+    revoke() {
+        this.loading = true;
+        this.thesisService.revokeThesis(this.thesis.thesisNumber).subscribe(res => {
+            console.log(res);
+            this.ngOnInit();
+        })
+    }
 }

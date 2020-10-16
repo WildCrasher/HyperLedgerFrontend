@@ -1,4 +1,7 @@
-<div class="container">
+<div class="main-text">
+    Szczegoly pracy dyplomowej
+</div>
+<div class="container container-table">
     <div class="row">
         <div class="col-2">
             Numer Pracy
@@ -39,12 +42,15 @@
             {{thesis.supervisor}}
         </div>
     </div>
-    <div *ngIf="thesis">
-        <div *ngIf="isStudent && thesis.student==' '">
-            <button (click)="assign()">Wybierz tę pracę</button>
-        </div>
-        <div *ngIf="isSupervisor && thesis.student!=' '">
-            <button (click)="approve()">Zatwierdź przypisanie pracy do studenta</button>
-        </div>
+</div>
+<div class="buttons" *ngIf="thesis">
+    <div *ngIf="isStudent && thesis.student==' '">
+        <button class="button button-primary" [class.spinner]="loading" (click)="assign()">Wybierz tę pracę</button>
+    </div>
+    <div *ngIf="isStudent && thesis.student == authService.username">
+        <button class="button button-primary" [class.spinner]="loading" (click)="revoke()">Zrezygnuj z tej pracy</button>
+    </div>
+    <div *ngIf="isSupervisor && thesis.student!=' '">
+        <button class="button button-primary" [class.spinner]="loading" (click)="approve()">Zatwierdź przypisanie pracy do studenta</button>
     </div>
 </div>

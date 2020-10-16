@@ -17,6 +17,7 @@ export class ThesisService {
     private getThesisUrl = 'api/thesis/';
     private assignThesisUrl = 'api/thesis/assign';
     private approveThesisUrl = 'api/thesis/approve';
+    private revokeThesisUrl = 'api/thesis/revoke';
 
     constructor(
         private http: HttpClient,
@@ -46,6 +47,12 @@ export class ThesisService {
 
     approveThesis(thesisNumber: string): Observable<any> {
         return this.http.post(this.url + this.approveThesisUrl, {
+            thesisNumber: thesisNumber
+        });
+    }
+
+    revokeThesis(thesisNumber: string): Observable<any> {
+        return this.http.post(this.url + this.revokeThesisUrl, {
             thesisNumber: thesisNumber
         });
     }

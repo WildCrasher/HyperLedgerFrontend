@@ -11,7 +11,8 @@ import { RegisterDtoImpl } from '../shared/dtos/register.dto';
 })
 export class RegisterComponent implements OnInit {
 
-    registerForm: FormGroup
+    registerForm: FormGroup;
+    loading = false;
 
     constructor( 
         private formBuilder: FormBuilder,
@@ -34,6 +35,7 @@ export class RegisterComponent implements OnInit {
     onRegister() {
         if(this.registerForm.valid) {
             if(this.registerForm.get('passwordGroup').get('password').value === this.registerForm.get('passwordGroup').get('matchingPassword').value) {
+                this.loading = true;
                 const values = this.registerForm.value;
 
                 const dto: RegisterDtoImpl = new RegisterDtoImpl();
@@ -44,8 +46,10 @@ export class RegisterComponent implements OnInit {
                 this.authService.register(dto).subscribe(res => {
                     console.log(res);
                     this.router.navigate(['']);
+                    this.loading = false;
                 }, error => {
                     console.log(error);
+                    this.loading = false;
                 })
             }
             else {

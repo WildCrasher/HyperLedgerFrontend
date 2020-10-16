@@ -41,6 +41,22 @@ html, body {
     height: 100%;
 }
 
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+.spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: #000000;
+    animation: spinner .8s linear infinite;
+}
+
 .button-primary {
     color: $colorWhite;
     background-color: $colorBlue;
@@ -50,8 +66,18 @@ html, body {
     cursor: pointer;
 
     &:hover {
-        background-color: $lightBlue;
+        background-color: $colorLightBlue;
         color: $colorWhite;
+    }
+
+    &:disabled {
+        background-color: $colorDisabled;
+        color: $colorGrey;
+    }
+
+    &:focus, &:active {
+        outline: none;
+        background-color: $colorLightBlue;
     }
 }
 

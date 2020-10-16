@@ -11,6 +11,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class LoginComponent implements OnInit {
 
     loginForm: FormGroup;
+    loading = false;
 
     constructor(
         private fb: FormBuilder,
@@ -27,12 +28,15 @@ export class LoginComponent implements OnInit {
 
     onLogin() {
         if (this.loginForm.valid) {
+            this.loading = true;
             this.authService.login(this.loginForm.value).subscribe(resp => {
                 localStorage.setItem('auth_key', resp['auth_key']);
                 this.router.navigate(['thesis-add']);
+                this.loading = false;
             }, (err) => {
                 //TODO
                 console.log('ERROR', err);
+                this.loading = false;
             });
         }
     }
