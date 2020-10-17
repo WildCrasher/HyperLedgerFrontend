@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
             return false;
         }
         else {
-            if(url == 'login' || url == 'register') {
+            if(url == 'login' || url == 'register' || url == '') {
                 this.router.navigate(['theses-list']);
                 return false;
             }

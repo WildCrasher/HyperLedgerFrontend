@@ -33,6 +33,16 @@ const routes: Routes = [
         data: {url: 'thesis-add'},
         loadChildren: () => import('./thesis-add/thesis-add.module').then(mod => mod.ThesisAddModule),
     },
+    {
+        path: '',
+        canActivate: [AuthGuard],
+        data: {url: ''},
+        loadChildren: () => import('./login/login.module').then(mod => mod.LoginModule),
+    },
+    {
+        path: '**',
+        loadChildren: () => import('./not-found/not-found.module').then(mod => mod.NotFoundModule),        
+    },
 ];
 
 @NgModule({
