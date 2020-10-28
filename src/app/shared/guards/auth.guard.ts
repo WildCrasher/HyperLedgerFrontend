@@ -33,6 +33,10 @@ export class AuthGuard implements CanActivate {
             }
             else {
                 if(this.authService.userRole == 'supervisor') {
+                    if(url == 'thesis-assignments') {
+                        this.router.navigate(['theses-list']);
+                        return false;
+                    }
                     return true;
                 }
                 else {

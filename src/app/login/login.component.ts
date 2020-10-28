@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
             this.loading = true;
             this.authService.login(this.loginForm.value).subscribe(resp => {
                 localStorage.setItem('auth_key', resp['auth_key']);
-                this.router.navigate(['thesis-add']);
+                this.router.navigate(['theses-list']);
                 this.loading = false;
             }, (err) => {
                 //TODO

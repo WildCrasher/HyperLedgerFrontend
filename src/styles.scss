@@ -1,4 +1,6 @@
 @import "./constants.scss";
+$fa-font-path: "/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
 
 .container {
     display: flex;

@@ -5,6 +5,7 @@ export interface ThesisDto {
     state: string;
     student: string;
     supervisor: string;
+    studentsAssigned: Array<any>;
 }
 
 export class ThesisDtoImpl implements ThesisDto {
@@ -15,6 +16,7 @@ export class ThesisDtoImpl implements ThesisDto {
     state: string;
     student: string;
     supervisor: string;
+    studentsAssigned: Array<any>;
 
     constructor(item?: ThesisDto) {
         if(item != undefined) {

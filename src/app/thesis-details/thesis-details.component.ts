@@ -1,4 +1,6 @@
+import { OptionIsNotDefinedException } from '@angular-devkit/schematics';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ThesisDto } from '../shared/dtos/thesis.dto';
 import { AuthService } from '../shared/services/auth.service';
@@ -13,12 +15,18 @@ export class ThesisDetailsComponent implements OnInit {
 
     thesis: ThesisDto;
     loading = false;
+    assignForm: FormGroup;
 
     constructor(
         private route: ActivatedRoute,
+        private formBuilder: FormBuilder,
         private thesisService: ThesisService,
-        private authService: AuthService,
-    ) {}
+        public authService: AuthService,
+    ) {
+        this.assignForm = this.formBuilder.group({
+            priority: ['2', Validators.required],
+        });
+    }
 
     ngOnInit(): void {
         this.route.paramMap.subscribe((params) => {
@@ -27,6 +35,7 @@ export class ThesisDetailsComponent implements OnInit {
                 this.thesisService.getThesis(params.get('id')).subscribe((res) => {
                     this.thesis = JSON.parse(res);
                     this.loading = false;
+                    console.log(this.thesis);
                 });
             }
             else {
@@ -44,23 +53,31 @@ export class ThesisDetailsComponent implements OnInit {
         return this.authService.userRole == "supervisor";
     }
 
-    assign() {
-        this.loading = true;
-        this.thesisService.assignStudent(this.thesis.thesisNumber).subscribe(
-            res => {
-                console.log(res);
-                this.ngOnInit();
-            },
-            error => {
-                this.loading = false;
-                console.log(error);
-            }
-        );
+    get isStudentAssigned(): boolean {
+        return this.loading == false
+            && this.isStudent
+            && this.thesis.studentsAssigned.find(student => student.studentName == this.authService.username) != undefined;
     }
 
-    approve() {
+    onAssign() {
+        if(this.assignForm.valid) {
+            this.loading = true;
+            this.thesisService.assignStudent(this.thesis.thesisNumber, this.assignForm.value.priority).subscribe(
+                res => {
+                    console.log(res);
+                    this.ngOnInit();
+                },
+                error => {
+                    this.loading = false;
+                    console.log(error);
+                }
+            );
+        }
+    }
+
+    onChooseStudent() {
         this.loading = true;
-        this.thesisService.approveThesis(this.thesis.thesisNumber).subscribe(
+        this.thesisService.chooseThesis(this.thesis.thesisNumber).subscribe(
             res => {
                 console.log(res);
                 this.ngOnInit();

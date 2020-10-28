@@ -1,5 +1,5 @@
 <div class="navbar row">
-    <div *ngIf="authService.username" class="col-6 col-md-5">
+    <div *ngIf="authService.username" class="col-5">
         <div class="row">
             <div class="user col-7 d-none d-md-block navbar-title">
                 {{ authService.username }}
@@ -11,6 +11,9 @@
     <ng-template #thenBLock>
         <div *ngIf="authService.userRole == 'supervisor'" class="col-2">
             <a [routerLink]="['thesis-add']">Dodaj pracę dyplomową</a>
+        </div>
+        <div *ngIf="authService.userRole == 'student'" class="col-2">
+            <a [routerLink]="['thesis-assignments']">Twoja aktualna lista zapisow</a>
         </div>
         <div class="col-2">
             <a [routerLink]="['theses-list']">Lista prac dyplomowych</a>

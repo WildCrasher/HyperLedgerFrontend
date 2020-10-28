@@ -1,6 +1,9 @@
 <div class="main-text">
     Szczegóły pracy dyplomowej
 </div>
+<div *ngIf="isStudentAssigned" class="main-text student-assigned-text">
+    Wyraziles chec pisania tej pracy dyplomowej
+</div>
 <div class="container container-table">
     <div class="row">
         <div class="col-2">
@@ -24,7 +27,7 @@
     </div>
     <div *ngIf="!loading; then thenBlock else elseBlock"></div>
     <ng-template #thenBlock>
-        <div class="row">
+        <div *ngIf="thesis" class="row">
             <div class="col-2">
                 {{thesis.thesisNumber}}
             </div>
@@ -53,13 +56,60 @@
     </ng-template>
 </div>
 <div class="buttons" *ngIf="thesis">
-    <div *ngIf="isStudent && thesis.student==' '">
-        <button class="button button-primary" [class.spinner]="loading" (click)="assign()">Wybierz tę pracę</button>
+    <div *ngIf="isStudent && !isStudentAssigned">
+        <form [formGroup]="assignForm">
+            <div class="form-group">
+                <label>Priorytet</label>
+                <select formControlName="priority">
+                    <option [value]="'3'">Wysoki</option>
+                    <option [value]="'2'">Sredni</option>
+                    <option [value]="'1'">Niski</option>
+                </select>
+                <div class="w-100"></div>
+                <app-input-message [input]="assignForm.get('priority')"></app-input-message>
+                <div class="w-100"></div>
+            </div>
+            <button type="button" class="button button-primary" [class.spinner]="loading" (click)="onAssign()">Wybierz tę pracę</button>
+        </form>
     </div>
-    <div *ngIf="isStudent && thesis.student == authService.username">
+    <div *ngIf="isStudent && isStudentAssigned">
         <button class="button button-primary" [class.spinner]="loading" (click)="revoke()">Zrezygnuj z tej pracy</button>
     </div>
-    <div *ngIf="isSupervisor && thesis.student != ' '">
-        <button class="button button-primary" [class.spinner]="loading" (click)="approve()">Zatwierdź przypisanie pracy do studenta</button>
+    <div *ngIf="isSupervisor" class="container container-table">
+        <div class="row">
+            <div class="col-3">
+                Nazwa studenta
+            </div>
+            <div class="col-3">
+                Data przypisania
+            </div>
+            <div class="col-3">
+                Priorytet
+            </div>
+            <div class="col-3">
+                Akcja
+            </div>
+        </div>
+        <div *ngIf="thesis && thesis.studentsAssigned.length > 0; then thenBlock"></div>
+        <ng-template #thenBlock>
+            <div *ngFor="let student of thesis.studentsAssigned; let i = index" class="row">
+                <div class="col-3">
+                    {{student.studentName}}
+                </div>
+                <div class="col-3">
+                    {{student.date}}
+                </div>
+                <div class="col-3">
+                    Kolejnosc: {{i + 1}}
+                    <br>
+                    Priorytet studenta: {{ (student.priority == 3 ? 'Wysoki' : student.priority == 2 ? Sredni : Niski) }}
+                    <br>
+                    Liczba prac, do ktrych zapisany jest student: xxx
+                </div>
+                <div class="col-3">
+                    <button class="button button-primary" [class.spinner]="loading" (click)="onChooseStudent()">Zaproponuj studentowi prace</button>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>

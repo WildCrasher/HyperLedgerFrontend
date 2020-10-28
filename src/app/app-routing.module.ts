@@ -28,6 +28,12 @@ const routes: Routes = [
         loadChildren: () => import('./thesis-details/thesis-details.module').then(mod => mod.ThesisDetailsModule),
     },
     {
+        path: 'thesis-assignments',
+        canActivate: [AuthGuard],
+        data: {url: 'thesis-assignments'},
+        loadChildren: () => import('./thesis-assignments/thesis-assignments.module').then(mod => mod.ThesisAssignmentsModule),
+    },
+    {
         path: 'thesis-add',
         canActivate: [AuthGuard],
         data: {url: 'thesis-add'},
