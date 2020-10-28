@@ -22,24 +22,35 @@
             Akcja
         </div>
     </div>
-    <div class="row" *ngFor="let thesis of theses">
-        <div class="col-2">
-            {{thesis.topic | slice:0:10}} ...
+    <div *ngIf="theses.length > 0; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <div class="row" *ngFor="let thesis of theses">
+            <div class="col-2">
+                {{thesis.topic | slice:0:10}} ...
+            </div>
+            <div class="col-2">
+                {{thesis.issueDateTime}}
+            </div>
+            <div class="col-2">
+                {{thesis.state}}
+            </div>
+            <div class="col-2">
+                {{thesis.student}}
+            </div>
+            <div class="col-2">
+                {{thesis.supervisor}}
+            </div>
+            <div class="col-2">
+                <button class="button button-primary" (click)="onThesisDetails(thesis.thesisNumber)">Szczegóły</button>
+            </div>
         </div>
-        <div class="col-2">
-            {{thesis.issueDateTime}}
+    </ng-template>
+    <ng-template #elseBlock>
+        <div class="row">
+            <div *ngIf="!loading" class="col-12">
+                Brak dostepnych prac dyplomowych
+            </div>
+            <div *ngIf="loading" class="col-12 spinner"></div>
         </div>
-        <div class="col-2">
-            {{thesis.state}}
-        </div>
-        <div class="col-2">
-            {{thesis.student}}
-        </div>
-        <div class="col-2">
-            {{thesis.supervisor}}
-        </div>
-        <div class="col-2">
-            <button class="button button-primary" (click)="onThesisDetails(thesis.thesisNumber)">Szczegóły</button>
-        </div>
-    </div>
+    </ng-template>
 </div>

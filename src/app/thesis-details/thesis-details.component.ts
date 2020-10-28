@@ -23,6 +23,7 @@ export class ThesisDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.route.paramMap.subscribe((params) => {
             if(params.get('id')) {
+                this.loading = true;
                 this.thesisService.getThesis(params.get('id')).subscribe((res) => {
                     this.thesis = JSON.parse(res);
                     this.loading = false;
@@ -45,25 +46,43 @@ export class ThesisDetailsComponent implements OnInit {
 
     assign() {
         this.loading = true;
-        this.thesisService.assignStudent(this.thesis.thesisNumber).subscribe(res => {
-            console.log(res);
-            this.ngOnInit();
-        });
+        this.thesisService.assignStudent(this.thesis.thesisNumber).subscribe(
+            res => {
+                console.log(res);
+                this.ngOnInit();
+            },
+            error => {
+                this.loading = false;
+                console.log(error);
+            }
+        );
     }
 
     approve() {
         this.loading = true;
-        this.thesisService.approveThesis(this.thesis.thesisNumber).subscribe(res => {
-            console.log(res);
-            this.ngOnInit();
-        })
+        this.thesisService.approveThesis(this.thesis.thesisNumber).subscribe(
+            res => {
+                console.log(res);
+                this.ngOnInit();
+            },
+            error => {
+                this.loading = false;
+                console.log(error);
+            }
+        );
     }
 
     revoke() {
         this.loading = true;
-        this.thesisService.revokeThesis(this.thesis.thesisNumber).subscribe(res => {
-            console.log(res);
-            this.ngOnInit();
-        })
+        this.thesisService.revokeThesis(this.thesis.thesisNumber).subscribe(
+            res => {
+                console.log(res);
+                this.ngOnInit();
+            },
+            error => {
+                this.loading = false;
+                console.log(error);
+            }
+        )
     }
 }

@@ -22,26 +22,35 @@
             Promotor
         </div>
     </div>
-    <div *ngIf="thesis" class="row">
-        <div class="col-2">
-            {{thesis.thesisNumber}}
+    <div *ngIf="!loading; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <div class="row">
+            <div class="col-2">
+                {{thesis.thesisNumber}}
+            </div>
+            <div class="col-2">
+                {{thesis.topic}}
+            </div>
+            <div class="col-2">
+                {{thesis.issueDateTime}}
+            </div>
+            <div class="col-2">
+                {{thesis.state}}
+            </div>
+            <div class="col-2">
+                {{thesis.student}}
+            </div>
+            <div class="col-2">
+                {{thesis.supervisor}}
+            </div>
         </div>
-        <div class="col-2">
-            {{thesis.topic}}
+    </ng-template>
+    <ng-template #elseBlock>
+        <div class="row">
+            <div class="col-12 spinner">
+            </div>
         </div>
-        <div class="col-2">
-            {{thesis.issueDateTime}}
-        </div>
-        <div class="col-2">
-            {{thesis.state}}
-        </div>
-        <div class="col-2">
-            {{thesis.student}}
-        </div>
-        <div class="col-2">
-            {{thesis.supervisor}}
-        </div>
-    </div>
+    </ng-template>
 </div>
 <div class="buttons" *ngIf="thesis">
     <div *ngIf="isStudent && thesis.student==' '">
@@ -50,7 +59,7 @@
     <div *ngIf="isStudent && thesis.student == authService.username">
         <button class="button button-primary" [class.spinner]="loading" (click)="revoke()">Zrezygnuj z tej pracy</button>
     </div>
-    <div *ngIf="isSupervisor && thesis.student!=' '">
+    <div *ngIf="isSupervisor && thesis.student != ' '">
         <button class="button button-primary" [class.spinner]="loading" (click)="approve()">Zatwierdź przypisanie pracy do studenta</button>
     </div>
 </div>

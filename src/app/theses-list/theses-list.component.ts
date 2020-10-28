@@ -10,7 +10,8 @@ import { ThesisService } from '../shared/services/thesis.service';
 })
 export class ThesesListComponent implements OnInit {
 
-    theses: ThesisDto[] = null;
+    theses: ThesisDto[] = [];
+    loading = false;
 
     constructor(
         private thesisService: ThesisService,
@@ -18,10 +19,18 @@ export class ThesesListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.thesisService.getTheses().subscribe((res) => {
-            console.log(JSON.parse(res));
-            this.theses = JSON.parse(res);
-        });
+        this.loading = true;
+        this.thesisService.getTheses().subscribe(
+            res => {
+                console.log(JSON.parse(res));
+                this.theses = JSON.parse(res);
+                this.loading = false;
+            },
+            error => {
+                this.loading = false;
+                console.log(error);
+            }
+        );
     }
 
     onThesisDetails(thesisNumber: string) {
