@@ -11,6 +11,7 @@ import { ThesisService } from './../shared/services/thesis.service';
 export class ThesisAddComponent implements OnInit {
 
     addThesisForm: FormGroup;
+    loading = false;
 
     constructor(
         private fb: FormBuilder,
@@ -27,12 +28,15 @@ export class ThesisAddComponent implements OnInit {
 
     onAddThesis() {
         if(this.addThesisForm.valid) {
+            this.loading = true;
             this.thesisService.addThesis(this.addThesisForm.value).subscribe((res) => {
                 this.router.navigate(['theses-list']);
                 if(res == 'success') {
+                    this.loading = false;
                     this.router.navigate(['theses-list']);
                 }
                 else {
+                    this.loading = false;
                     console.log('ERROR', res);
                 }
             });
