@@ -104,10 +104,10 @@
                     <br>
                     Priorytet studenta: {{ (student.priority == 3 ? 'Wysoki' : student.priority == 2 ? 'Sredni' : 'Niski') }}
                     <br>
-                    Liczba prac, do ktrych zapisany jest student: xxx
+                    Liczba prac, do ktrych zapisany jest student: {{student.thesisAssigned}}
                 </div>
                 <div class="col-3">
-                    <button class="button button-primary" [class.spinner]="loading" (click)="onChooseStudent()">Zaproponuj studentowi prace</button>
+                    <button class="button button-primary" [class.button-green]="student.studentName == thesis.student" [class.spinner]="loading" (click)="onChooseStudent(student.studentName)">{{ student.studentName == thesis.student ? 'Zaproponowales prace temu studentowi' : 'Zaproponuj studentowi prace'}}</button>
                 </div>
             </div>
         </ng-template>

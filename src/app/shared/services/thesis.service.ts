@@ -51,9 +51,10 @@ export class ThesisService {
         });
     }
 
-    chooseThesis(thesisNumber: string): Observable<any> {
+    chooseThesis(thesisNumber: string, username: string): Observable<any> {
         return this.http.post(this.url + this.chooseStudentUrl, {
-            thesisNumber: thesisNumber
+            thesisNumber: thesisNumber,
+            student: username
         });
     }
 

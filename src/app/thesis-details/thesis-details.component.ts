@@ -75,9 +75,9 @@ export class ThesisDetailsComponent implements OnInit {
         }
     }
 
-    onChooseStudent() {
+    onChooseStudent(studentName: string) {
         this.loading = true;
-        this.thesisService.chooseThesis(this.thesis.thesisNumber).subscribe(
+        this.thesisService.chooseThesis(this.thesis.thesisNumber, studentName).subscribe(
             res => {
                 console.log(res);
                 this.ngOnInit();

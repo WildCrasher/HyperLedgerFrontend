@@ -34,8 +34,12 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['theses-list']);
                 this.loading = false;
             }, (err) => {
-                //TODO
-                console.log('ERROR', err);
+                if(err == 'authError') {
+                    this.loginForm.get('password').setErrors({invalidPassword: true});
+                }
+                else {
+                    console.log('ERROR', err);
+                }
                 this.loading = false;
             });
         }
