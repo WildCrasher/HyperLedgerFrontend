@@ -55,7 +55,7 @@
         </div>
     </ng-template>
 </div>
-<div class="buttons" *ngIf="thesis">
+<div class="center" *ngIf="thesis">
     <div *ngIf="isStudent && !isStudentAssigned">
         <form [formGroup]="assignForm">
             <div class="form-group">
@@ -72,10 +72,17 @@
             <button type="button" class="button button-primary" [class.spinner]="loading" (click)="onAssign()">Wybierz tę pracę</button>
         </form>
     </div>
-    <div *ngIf="isStudent && isStudentAssigned">
-        <button class="button button-primary" [class.spinner]="loading" (click)="revoke()">Zrezygnuj z tej pracy</button>
+    <div *ngIf="isStudent && isStudentAssigned && !isStudentAskedBySupervisor">
+        <button class="button button-primary" [class.spinner]="loading" (click)="onRevoke()">Zrezygnuj z tej pracy</button>
     </div>
-    <div *ngIf="isSupervisor" class="container container-table">
+    <div *ngIf="isStudent && isStudentAskedBySupervisor">
+        <button class="button button-green" [class.spinner]="loading" (click)="onAccept()">Odpowiedz pozytywnie i ostatecznie wybierz prace</button>
+        <button class="button button-red" [class.spinner]="loading" (click)="onDecline()">Odpowiedz negatywnie i zrezygnuj z pracy</button>
+    </div>
+    <div *ngIf="isSupervisor && isThesisBelongsToSupervisor" class="container container-table">
+        <div class="main-text">
+            Lista studentow wyrazajacych chec do pisania tej pracy dyplomowej
+        </div>
         <div class="row">
             <div class="col-3">
                 Nazwa studenta
@@ -107,7 +114,7 @@
                     Liczba prac, do ktrych zapisany jest student: {{student.thesisAssigned}}
                 </div>
                 <div class="col-3">
-                    <button class="button button-primary" [class.button-green]="student.studentName == thesis.student" [class.spinner]="loading" (click)="onChooseStudent(student.studentName)">{{ student.studentName == thesis.student ? 'Zaproponowales prace temu studentowi' : 'Zaproponuj studentowi prace'}}</button>
+                    <button class="button" ng-class="student.studentName == thesis.student ? button-green : button-primary" [class.spinner]="loading" (click)="onChooseStudent(student.studentName)">{{ student.studentName == thesis.student ? 'Zaproponowales prace temu studentowi' : 'Zaproponuj studentowi prace'}}</button>
                 </div>
             </div>
         </ng-template>

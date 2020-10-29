@@ -43,7 +43,7 @@
     color: $colorGreen;
 }
 
-.buttons {
+.center {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,8 +51,4 @@
 
 .container-table {
     width: 1200px;
-}
-
-.button-green {
-    background-color: $colorGreen;
 }

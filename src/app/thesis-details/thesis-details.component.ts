@@ -55,8 +55,16 @@ export class ThesisDetailsComponent implements OnInit {
 
     get isStudentAssigned(): boolean {
         return this.loading == false
-            && this.isStudent
             && this.thesis.studentsAssigned.find(student => student.studentName == this.authService.username) != undefined;
+    }
+
+    get isStudentAskedBySupervisor(): boolean {
+        return this.loading == false
+            && this.thesis.student == this.authService.username;
+    }
+
+    get isThesisBelongsToSupervisor(): boolean {
+        return this.authService.username == this.thesis.supervisor;
     }
 
     onAssign() {
@@ -89,9 +97,37 @@ export class ThesisDetailsComponent implements OnInit {
         );
     }
 
-    revoke() {
+    onRevoke() {
         this.loading = true;
         this.thesisService.revokeThesis(this.thesis.thesisNumber).subscribe(
+            res => {
+                console.log(res);
+                this.ngOnInit();
+            },
+            error => {
+                this.loading = false;
+                console.log(error);
+            }
+        )
+    }
+
+    onAccept() {
+        this.loading = true;
+        this.thesisService.acceptAssignment(this.thesis.thesisNumber).subscribe(
+            res => {
+                console.log(res);
+                this.ngOnInit();
+            },
+            error => {
+                this.loading = false;
+                console.log(error);
+            }
+        )
+    }
+
+    onDecline() {
+        this.loading = true;
+        this.thesisService.declineAssignment(this.thesis.thesisNumber).subscribe(
             res => {
                 console.log(res);
                 this.ngOnInit();

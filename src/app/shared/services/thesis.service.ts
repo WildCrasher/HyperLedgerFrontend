@@ -19,6 +19,8 @@ export class ThesisService {
     private assignThesisUrl = 'api/thesis/assign';
     private chooseStudentUrl = 'api/thesis/choose-student';
     private revokeThesisUrl = 'api/thesis/revoke';
+    private acceptAssignmentUrl = 'api/thesis/accept';
+    private declineAssignmentUrl = 'api/thesis/decline';
 
     constructor(
         private http: HttpClient,
@@ -60,6 +62,18 @@ export class ThesisService {
 
     revokeThesis(thesisNumber: string): Observable<any> {
         return this.http.post(this.url + this.revokeThesisUrl, {
+            thesisNumber: thesisNumber
+        });
+    }
+
+    acceptAssignment(thesisNumber: string): Observable<any> {
+        return this.http.post(this.url + this.acceptAssignmentUrl, {
+            thesisNumber: thesisNumber
+        });
+    }
+
+    declineAssignment(thesisNumber: string): Observable<any> {
+        return this.http.post(this.url + this.declineAssignmentUrl, {
             thesisNumber: thesisNumber
         });
     }

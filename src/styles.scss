@@ -83,6 +83,54 @@ html, body {
     }
 }
 
+.button-green {
+    color: $colorWhite;
+    background-color: $colorGreen;
+    border-radius: 20px;
+    width: 200px;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $colorLightGreen;
+        color: $colorWhite;
+    }
+
+    &:disabled {
+        background-color: $colorDisabled;
+        color: $colorGrey;
+    }
+
+    &:focus, &:active {
+        outline: none;
+        background-color: $colorLightGreen;
+    }
+}
+
+.button-red {
+    color: $colorWhite;
+    background-color: $colorRed;
+    border-radius: 20px;
+    width: 200px;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $colorLightRed;
+        color: $colorWhite;
+    }
+
+    &:disabled {
+        background-color: $colorDisabled;
+        color: $colorGrey;
+    }
+
+    &:focus, &:active {
+        outline: none;
+        background-color: $colorLightRed;
+    }
+}
+
 input, select {
     border: none;
     border-radius: 10px;
