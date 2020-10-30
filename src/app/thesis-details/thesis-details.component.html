@@ -59,7 +59,7 @@
     </ng-template>
 </div>
 <div class="center" *ngIf="thesis">
-    <div *ngIf="isStudent && !isStudentAssigned && !isStudentAcceptedThisThesis && !isStudentChosenAnyThesis">
+    <div *ngIf="isStudent && !isStudentAssigned && !isStudentAcceptedThisThesis && !isStudentChosenAnyThesis && !isThesisOwned">
         <form [formGroup]="assignForm">
             <div class="form-group">
                 <label>Priorytet</label>

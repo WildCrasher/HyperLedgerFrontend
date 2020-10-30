@@ -28,7 +28,7 @@ export class ThesisAssignmentsComponent implements OnInit {
     }
 
     getStatus(thesis: ThesisDto): string {
-        if(thesis.student == '') {
+        if(thesis.student == ' ') {
             return 'Oczekiwanie na propozycję promotora'
         }
         else {
