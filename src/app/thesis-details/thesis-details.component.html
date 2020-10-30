@@ -2,7 +2,7 @@
     Szczegóły pracy dyplomowej
 </div>
 <div *ngIf="isStudentAssigned && !isStudentAcceptedThisThesis" class="main-text student-assigned-text">
-    Wyraziłes chęć pisania tej pracy dyplomowej
+    Wyraziłeś chęć pisania tej pracy dyplomowej
 </div>
 <div *ngIf="isStudentAssigned && isStudentAcceptedThisThesis" class="main-text student-assigned-text">
     Wybrałeś tę pracę dyplomową
@@ -123,7 +123,7 @@
                 </div>
                 <div class="col-3">
                     <div *ngIf="isThesisOwned">
-                        Student zadeklarowal pisanie tej pracy dyplomowej
+                        Student zadeklarował pisanie tej pracy dyplomowej
                     </div>
                     <div *ngIf="!isThesisOwned">
                         <button
