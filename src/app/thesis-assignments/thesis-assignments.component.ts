@@ -32,7 +32,7 @@ export class ThesisAssignmentsComponent implements OnInit {
             return 'Oczekiwanie na propozycję promotora'
         }
         else {
-            return this.isStudentChosenThesis ? 'Wybrales te prace' : 'Oczekiwanie na Twoją decyzję';
+            return this.isStudentChosenThesis ? 'Wybrałeś tę pracę dyplomową' : 'Oczekiwanie na Twoją decyzję';
         }
     }
 
