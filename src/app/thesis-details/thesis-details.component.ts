@@ -78,7 +78,7 @@ export class ThesisDetailsComponent implements OnInit {
             return 'Wolna';
         }
         else {
-            return 'Zajeta';
+            return 'Zajęta';
         }
     }
 
