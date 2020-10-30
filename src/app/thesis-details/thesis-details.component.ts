@@ -73,6 +73,15 @@ export class ThesisDetailsComponent implements OnInit {
             && this.thesis.state == 'OWNED';
     }
 
+    getState(): string {
+        if(this.thesis.state == 'FREE') {
+            return 'Wolna';
+        }
+        else {
+            return 'Zajeta';
+        }
+    }
+
     onAssign() {
         if(this.assignForm.valid) {
             this.loading = true;

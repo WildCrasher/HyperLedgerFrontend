@@ -18,7 +18,7 @@ export class ThesisAssignmentsComponent implements OnInit {
         private router: Router,
     ) { }
 
-    status(thesis: ThesisDto): string {
+    getStatus(thesis: ThesisDto): string {
         if(thesis.student == '') {
             return 'Oczekiwanie na propozycję promotora'
         }
