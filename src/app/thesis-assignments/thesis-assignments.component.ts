@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThesisDto } from '../shared/dtos/thesis.dto';
+import { AuthService } from '../shared/services/auth.service';
 import { ThesisService } from '../shared/services/thesis.service';
 
 @Component({
@@ -16,14 +17,22 @@ export class ThesisAssignmentsComponent implements OnInit {
     constructor(
         private thesisService: ThesisService,
         private router: Router,
+        private authService: AuthService,
     ) { }
+
+    get isStudentChosenThesis(): boolean {
+        return this.loading == false
+            && this.theses.length == 1
+            && this.theses[0].student == this.authService.username
+            && this.theses[0].state == 'OWNED';
+    }
 
     getStatus(thesis: ThesisDto): string {
         if(thesis.student == '') {
             return 'Oczekiwanie na propozycję promotora'
         }
         else {
-            return 'Oczekiwanie na Twoją decyzję';
+            return this.isStudentChosenThesis ? 'Wybrales te prace' : 'Oczekiwanie na Twoją decyzję';
         }
     }
 

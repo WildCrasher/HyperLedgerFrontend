@@ -1,5 +1,8 @@
-<div class="main-text">
-    Lista prac dyplomoywch, do których wyraziłeś chęć
+<div *ngIf="!isStudentChosenThesis" class="main-text">
+    Lista prac dyplomowych, do których wyraziłeś chęć
+</div>
+<div *ngIf="isStudentChosenThesis" class="main-text">
+    Wybrales te prace dyplomowa
 </div>
 <div class="container container-table">
     <div class="row">

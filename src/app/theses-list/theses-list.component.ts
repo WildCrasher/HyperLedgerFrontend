@@ -33,6 +33,15 @@ export class ThesesListComponent implements OnInit {
         );
     }
 
+    getState(thesis: ThesisDto): string {
+        if(thesis.state == 'FREE') {
+            return 'Wolna';
+        }
+        else {
+            return 'Zajęta';
+        }
+    }
+
     onThesisDetails(thesisNumber: string) {
         this.router.navigate([`/thesis-details/${thesisNumber}`]);
     }
