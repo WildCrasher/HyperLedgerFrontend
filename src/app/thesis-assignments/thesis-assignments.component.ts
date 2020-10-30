@@ -20,10 +20,10 @@ export class ThesisAssignmentsComponent implements OnInit {
 
     status(thesis: ThesisDto): string {
         if(thesis.student == '') {
-            return 'Oczekiwanie na propozycje promotora'
+            return 'Oczekiwanie na propozycję promotora'
         }
         else {
-            return 'Oczekiwanie na Twoja decyzje';
+            return 'Oczekiwanie na Twoją decyzję';
         }
     }
 

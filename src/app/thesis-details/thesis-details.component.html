@@ -2,10 +2,10 @@
     Szczegóły pracy dyplomowej
 </div>
 <div *ngIf="isStudentAssigned && !isStudentAcceptedSupervisorProposal" class="main-text student-assigned-text">
-    Wyraziles chec pisania tej pracy dyplomowej
+    Wyraziłes chęć pisania tej pracy dyplomowej
 </div>
 <div *ngIf="isStudentAssigned && isStudentAcceptedSupervisorProposal" class="main-text student-assigned-text">
-    Wybrales te prace dyplomowa
+    Wybrałeś tę pracę dyplomową
 </div>
 <div class="container container-table">
     <div class="row">
@@ -65,7 +65,7 @@
                 <label>Priorytet</label>
                 <select formControlName="priority">
                     <option [value]="'3'">Wysoki</option>
-                    <option [value]="'2'">Sredni</option>
+                    <option [value]="'2'">średni</option>
                     <option [value]="'1'">Niski</option>
                 </select>
                 <div class="w-100"></div>
@@ -80,16 +80,16 @@
     </div>
     <div *ngIf="isStudent && isStudentAskedBySupervisor && !isStudentAcceptedSupervisorProposal">
         <div class="main-text">
-            Promotor zaproponowal Ci udzial w pracy
+            Promotor zaproponował Ci udział w pracy
         </div>
         <div class="center">
-            <button class="button button-green" [class.spinner]="loading" (click)="onAccept()">Odpowiedz pozytywnie i ostatecznie wybierz prace</button>
+            <button class="button button-green" [class.spinner]="loading" (click)="onAccept()">Odpowiedz pozytywnie i ostatecznie wybierz pracę</button>
             <button class="button button-red" [class.spinner]="loading" (click)="onDecline()">Odpowiedz negatywnie i zrezygnuj z pracy</button>
         </div>
     </div>
     <div *ngIf="isSupervisor && isThesisBelongsToSupervisor" class="container container-table">
         <div class="main-text">
-            Lista studentow wyrazajacych chec do pisania tej pracy dyplomowej
+            Lista studentów wyrażających chęć do pisania tej pracy dyplomowej
         </div>
         <div class="row">
             <div class="col-3">
@@ -115,11 +115,11 @@
                     {{student.date}}
                 </div>
                 <div class="col-3">
-                    Kolejnosc: {{i + 1}}
+                    Kolejność: {{i + 1}}
                     <br>
-                    Priorytet studenta: {{ (student.priority == 3 ? 'Wysoki' : student.priority == 2 ? 'Sredni' : 'Niski') }}
+                    Priorytet studenta: {{ (student.priority == 3 ? 'Wysoki' : student.priority == 2 ? 'Średni' : 'Niski') }}
                     <br>
-                    Liczba prac, do ktrych zapisany jest student: {{student.thesisAssigned}}
+                    Liczba prac, do których zapisany jest student: {{student.thesisAssigned}}
                 </div>
                 <div class="col-3">
                     <button
@@ -127,7 +127,7 @@
                         [class.spinner]="loading"
                         (click)="onChooseStudent(student.studentName)"
                     >
-                            {{ student.studentName == thesis.student ? 'Zaproponowales prace temu studentowi' : 'Zaproponuj studentowi prace'}}
+                            {{ student.studentName == thesis.student ? 'Zaproponowałeś pracę temu studentowi' : 'Zaproponuj studentowi pracę'}}
                     </button>
                 </div>
             </div>
@@ -135,7 +135,7 @@
         <ng-template #elseBlockStudents>
             <div class="row">
                 <div class="col-12">
-                    Brak studentow chcacych pisac te prace
+                    Brak studentow chcących pisać tę pracę
                 </div>
             </div>
         </ng-template>
