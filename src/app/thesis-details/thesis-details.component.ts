@@ -16,6 +16,7 @@ export class ThesisDetailsComponent implements OnInit {
     thesis: ThesisDto;
     loading = false;
     assignForm: FormGroup;
+    isStudentChosenAnyThesis = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -34,6 +35,7 @@ export class ThesisDetailsComponent implements OnInit {
                 this.loading = true;
                 this.thesisService.getThesis(params.get('id')).subscribe((res) => {
                     this.thesis = JSON.parse(res);
+                    this.resolveIfStudentChosenAnyThesis();
                     this.loading = false;
                     console.log(this.thesis);
                 });
@@ -60,16 +62,22 @@ export class ThesisDetailsComponent implements OnInit {
 
     get isStudentAskedBySupervisor(): boolean {
         return this.loading == false
-            && this.thesis.student == this.authService.username;
+            && this.thesis.student == this.authService.username
+            && this.thesis.state == "FREE";
     }
 
     get isThesisBelongsToSupervisor(): boolean {
         return this.authService.username == this.thesis.supervisor;
     }
 
-    get isStudentAcceptedSupervisorProposal(): boolean {
+    get isStudentAcceptedThisThesis(): boolean {
         return this.loading == false
-            && this.isStudentAskedBySupervisor
+            && this.thesis.student == this.authService.username
+            && this.thesis.state == 'OWNED';
+    }
+
+    get isThesisOwned(): boolean {
+        return this.loading == false
             && this.thesis.state == 'OWNED';
     }
 
@@ -80,6 +88,25 @@ export class ThesisDetailsComponent implements OnInit {
         else {
             return 'Zajęta';
         }
+    }
+
+    resolveIfStudentChosenAnyThesis() {
+        this.thesisService.getThesisAssignments().subscribe(
+            res => {
+                console.log(JSON.parse(res));
+                const theses = JSON.parse(res);
+                if(theses.length == 1
+                    && theses[0].student == this.authService.username
+                    && theses[0].state == 'OWNED'
+                ) {
+                    this.isStudentChosenAnyThesis = true;
+                }
+            },
+            error => {
+                this.loading = false;
+                console.log(error);
+            }
+        );
     }
 
     onAssign() {

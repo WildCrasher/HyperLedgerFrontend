@@ -1,16 +1,16 @@
 <div class="main-text">
     Szczegóły pracy dyplomowej
 </div>
-<div *ngIf="isStudentAssigned && !isStudentAcceptedSupervisorProposal" class="main-text student-assigned-text">
+<div *ngIf="isStudentAssigned && !isStudentAcceptedThisThesis" class="main-text student-assigned-text">
     Wyraziłes chęć pisania tej pracy dyplomowej
 </div>
-<div *ngIf="isStudentAssigned && isStudentAcceptedSupervisorProposal" class="main-text student-assigned-text">
+<div *ngIf="isStudentAssigned && isStudentAcceptedThisThesis" class="main-text student-assigned-text">
     Wybrałeś tę pracę dyplomową
 </div>
 <div class="container container-table">
     <div class="row">
         <div class="col-2">
-            Numer Pracy
+            Numer pracy
         </div>
         <div class="col-2">
             Temat
@@ -59,7 +59,7 @@
     </ng-template>
 </div>
 <div class="center" *ngIf="thesis">
-    <div *ngIf="isStudent && !isStudentAssigned">
+    <div *ngIf="isStudent && !isStudentAssigned && !isStudentAcceptedThisThesis && !isStudentChosenAnyThesis">
         <form [formGroup]="assignForm">
             <div class="form-group">
                 <label>Priorytet</label>
@@ -75,10 +75,10 @@
             <button type="button" class="button button-primary" [class.spinner]="loading" (click)="onAssign()">Wybierz tę pracę</button>
         </form>
     </div>
-    <div *ngIf="isStudent && isStudentAssigned && !isStudentAskedBySupervisor">
+    <div *ngIf="isStudent && isStudentAssigned && !(isStudentAskedBySupervisor || isStudentAcceptedThisThesis) && !isStudentChosenAnyThesis">
         <button class="button button-primary" [class.spinner]="loading" (click)="onRevoke()">Zrezygnuj z tej pracy</button>
     </div>
-    <div *ngIf="isStudent && isStudentAskedBySupervisor && !isStudentAcceptedSupervisorProposal">
+    <div *ngIf="isStudent && isStudentAskedBySupervisor && !isStudentAcceptedThisThesis && !isStudentChosenAnyThesis">
         <div class="main-text">
             Promotor zaproponował Ci udział w pracy
         </div>
@@ -122,13 +122,18 @@
                     Liczba prac, do których zapisany jest student: {{student.thesisAssigned}}
                 </div>
                 <div class="col-3">
-                    <button
-                        [className]="student.studentName == thesis.student ? 'button button-green' : 'button button-primary'"
-                        [class.spinner]="loading"
-                        (click)="onChooseStudent(student.studentName)"
-                    >
+                    <div *ngIf="isThesisOwned">
+                        Student zadeklarowal pisanie tej pracy dyplomowej
+                    </div>
+                    <div *ngIf="!isThesisOwned">
+                        <button
+                            [className]="student.studentName == thesis.student ? 'button button-green' : 'button button-primary'"
+                            [class.spinner]="loading"
+                            (click)="onChooseStudent(student.studentName)"
+                        >
                             {{ student.studentName == thesis.student ? 'Zaproponowałeś pracę temu studentowi' : 'Zaproponuj studentowi pracę'}}
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
         </ng-template>
