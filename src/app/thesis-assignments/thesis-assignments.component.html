@@ -20,7 +20,7 @@
                 {{thesis.topic | slice:0:10}} ...
             </div>
             <div class="col-4">
-                Status TODO
+                {{status(thesis)}}
             </div>
             <div class="col-4">
                 <button class="button button-primary" (click)="onThesisDetails(thesis.thesisNumber)">Szczegóły</button>

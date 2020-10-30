@@ -18,6 +18,15 @@ export class ThesisAssignmentsComponent implements OnInit {
         private router: Router,
     ) { }
 
+    status(thesis: ThesisDto): string {
+        if(thesis.student == '') {
+            return 'Oczekiwanie na propozycje promotora'
+        }
+        else {
+            return 'Oczekiwanie na Twoja decyzje';
+        }
+    }
+
     ngOnInit(): void {
         this.loading = true;
         this.thesisService.getThesisAssignments().subscribe(

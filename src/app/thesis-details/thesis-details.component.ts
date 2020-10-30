@@ -67,6 +67,12 @@ export class ThesisDetailsComponent implements OnInit {
         return this.authService.username == this.thesis.supervisor;
     }
 
+    get isStudentAcceptedSupervisorProposal(): boolean {
+        return this.loading == false
+            && this.isStudentAskedBySupervisor
+            && this.thesis.state == 'OWNED';
+    }
+
     onAssign() {
         if(this.assignForm.valid) {
             this.loading = true;

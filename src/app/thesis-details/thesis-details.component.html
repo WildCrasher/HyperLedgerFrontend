@@ -1,8 +1,11 @@
 <div class="main-text">
     Szczegóły pracy dyplomowej
 </div>
-<div *ngIf="isStudentAssigned" class="main-text student-assigned-text">
+<div *ngIf="isStudentAssigned && !isStudentAcceptedSupervisorProposal" class="main-text student-assigned-text">
     Wyraziles chec pisania tej pracy dyplomowej
+</div>
+<div *ngIf="isStudentAssigned && isStudentAcceptedSupervisorProposal" class="main-text student-assigned-text">
+    Wybrales te prace dyplomowa
 </div>
 <div class="container container-table">
     <div class="row">
@@ -75,9 +78,14 @@
     <div *ngIf="isStudent && isStudentAssigned && !isStudentAskedBySupervisor">
         <button class="button button-primary" [class.spinner]="loading" (click)="onRevoke()">Zrezygnuj z tej pracy</button>
     </div>
-    <div *ngIf="isStudent && isStudentAskedBySupervisor">
-        <button class="button button-green" [class.spinner]="loading" (click)="onAccept()">Odpowiedz pozytywnie i ostatecznie wybierz prace</button>
-        <button class="button button-red" [class.spinner]="loading" (click)="onDecline()">Odpowiedz negatywnie i zrezygnuj z pracy</button>
+    <div *ngIf="isStudent && isStudentAskedBySupervisor && !isStudentAcceptedSupervisorProposal">
+        <div class="main-text">
+            Promotor zaproponowal Ci udzial w pracy
+        </div>
+        <div class="center">
+            <button class="button button-green" [class.spinner]="loading" (click)="onAccept()">Odpowiedz pozytywnie i ostatecznie wybierz prace</button>
+            <button class="button button-red" [class.spinner]="loading" (click)="onDecline()">Odpowiedz negatywnie i zrezygnuj z pracy</button>
+        </div>
     </div>
     <div *ngIf="isSupervisor && isThesisBelongsToSupervisor" class="container container-table">
         <div class="main-text">
@@ -97,8 +105,8 @@
                 Akcja
             </div>
         </div>
-        <div *ngIf="thesis && thesis.studentsAssigned.length > 0; then thenBlock"></div>
-        <ng-template #thenBlock>
+        <div *ngIf="thesis && thesis.studentsAssigned.length > 0; then thenBlockStudents else elseBlockStudents"></div>
+        <ng-template #thenBlockStudents>
             <div *ngFor="let student of thesis.studentsAssigned; let i = index" class="row">
                 <div class="col-3">
                     {{student.studentName}}
@@ -114,7 +122,20 @@
                     Liczba prac, do ktrych zapisany jest student: {{student.thesisAssigned}}
                 </div>
                 <div class="col-3">
-                    <button class="button" ng-class="student.studentName == thesis.student ? button-green : button-primary" [class.spinner]="loading" (click)="onChooseStudent(student.studentName)">{{ student.studentName == thesis.student ? 'Zaproponowales prace temu studentowi' : 'Zaproponuj studentowi prace'}}</button>
+                    <button
+                        [className]="student.studentName == thesis.student ? 'button button-green' : 'button button-primary'"
+                        [class.spinner]="loading"
+                        (click)="onChooseStudent(student.studentName)"
+                    >
+                            {{ student.studentName == thesis.student ? 'Zaproponowales prace temu studentowi' : 'Zaproponuj studentowi prace'}}
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #elseBlockStudents>
+            <div class="row">
+                <div class="col-12">
+                    Brak studentow chcacych pisac te prace
                 </div>
             </div>
         </ng-template>

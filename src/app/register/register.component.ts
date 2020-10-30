@@ -47,8 +47,14 @@ export class RegisterComponent implements OnInit {
                     console.log(res);
                     this.router.navigate(['']);
                     this.loading = false;
-                }, error => {
-                    console.log(error);
+                }, resErr => {
+                    console.log(resErr);
+                    if(resErr.error.text.includes('There is an account with that username')) {
+                        this.registerForm.get('name').setErrors({userExists: true});
+                    }
+                    else {
+                        console.log(resErr);
+                    }
                     this.loading = false;
                 })
             }
