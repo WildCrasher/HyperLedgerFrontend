@@ -49,7 +49,7 @@ export class ThesisService {
         // let headers = new HttpHeaders();
         // headers.set('Access-Control-Allow-Origin', '*');
         // headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
-        return this.http.get<any>(this.url + this.removeThesisUrl + id/*, {headers: headers}*/);
+        return this.http.get<any>(this.url + this.removeThesisUrl + '/' + id/*, {headers: headers}*/);
     }
 
     assignStudent(thesisNumber: string, priority: string): Observable<any> {
