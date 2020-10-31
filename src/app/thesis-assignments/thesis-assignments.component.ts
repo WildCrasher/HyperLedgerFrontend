@@ -20,7 +20,7 @@ export class ThesisAssignmentsComponent implements OnInit {
         private authService: AuthService,
     ) { }
 
-    get isStudentChosenThesis(): boolean {
+    get isThisStudentChosenThesis(): boolean {
         return this.loading == false
             && this.theses.length == 1
             && this.theses[0].student == this.authService.username
@@ -32,8 +32,21 @@ export class ThesisAssignmentsComponent implements OnInit {
             return 'Oczekiwanie na propozycję promotora'
         }
         else {
-            return this.isStudentChosenThesis ? 'Wybrałeś tę pracę dyplomową' : 'Oczekiwanie na Twoją decyzję';
+            if(this.isSupervisorProposedThesisToThisStudent(thesis) && !this.isThisStudentChosenThesis) {
+                return 'Oczekiwanie na Twoją decyzję';
+            }
+            else if(!this.isSupervisorProposedThesisToThisStudent(thesis) && thesis.state != 'OWNED') {
+                return 'Oczekiwanie na decyzje ' + thesis.student;
+            }
+            else {
+                return 'Wybrales ta prace dyplomowa';
+            }
         }
+    }
+
+    isSupervisorProposedThesisToThisStudent(thesis): boolean {
+        return this.loading == false
+            && thesis.student == this.authService.username;
     }
 
     ngOnInit(): void {

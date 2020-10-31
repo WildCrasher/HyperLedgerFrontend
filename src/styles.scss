@@ -25,7 +25,7 @@ $fa-font-path: "/fonts";
     padding-right: 8rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    height: 80%;
+    min-height: 80%;
     background-color: #bee2ed;
 
     @media(max-width: 700px) {
