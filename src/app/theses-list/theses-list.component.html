@@ -42,6 +42,9 @@
             </div>
             <div class="col-2">
                 <button class="button button-primary" (click)="onThesisDetails(thesis.thesisNumber)">Szczegóły</button>
+                <span *ngIf="isThesisBelongsToSupervisor(thesis) && !isSomeoneAssignOrChosenThesis(thesis)">
+                    <button class="button button-red width" (click)="onThesisRemove(thesis.thesisNumber)">Usun</button>
+                </span>
             </div>
         </div>
     </ng-template>

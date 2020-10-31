@@ -35,6 +35,15 @@ export class ThesesSupervisorComponent implements OnInit {
         );
     }
 
+    isThesisBelongsToSupervisor(thesis: ThesisDto): boolean {
+        return this.loading == false && this.authService.username == thesis.supervisor;
+    }
+
+    isSomeoneAssignOrChosenThesis(thesis: ThesisDto): boolean {
+        return this.loading == false
+            && ((thesis.studentsAssigned.length >= 1 && thesis.state == 'FREE') || thesis.state == 'OWNED');
+    }
+
     getState(thesis: ThesisDto): string {
         if(thesis.state == 'FREE') {
             return 'Wolna';
@@ -46,5 +55,18 @@ export class ThesesSupervisorComponent implements OnInit {
 
     onThesisDetails(thesisNumber: string) {
         this.router.navigate([`/thesis-details/${thesisNumber}`]);
+    }
+
+    onThesisRemove(thesisNumber: string) {
+        this.loading = true;
+        this.thesisService.removeThesis(thesisNumber).subscribe(
+            res => {
+                this.ngOnInit();
+            },
+            error => {
+                this.loading = false;
+                console.log(error);
+            }
+        );
     }
 }

@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
-import { ThesisDto } from './../dtos/thesis.dto';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -16,6 +15,7 @@ export class ThesisService {
     private getThesesUrl = 'api/thesis';
     private getThesisUrl = 'api/thesis/';
     private getThesisAssignmentsUrl = 'api/thesis/thesis-assignments';
+    private removeThesisUrl = 'api/thesis/delete';
     private assignThesisUrl = 'api/thesis/assign';
     private chooseStudentUrl = 'api/thesis/choose-student';
     private revokeThesisUrl = 'api/thesis/revoke';
@@ -43,6 +43,13 @@ export class ThesisService {
 
     getThesis(id: string) {
         return this.http.get<any>(this.url + this.getThesisUrl + id);
+    }
+
+    removeThesis(id: string) {
+        // let headers = new HttpHeaders();
+        // headers.set('Access-Control-Allow-Origin', '*');
+        // headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
+        return this.http.get<any>(this.url + this.removeThesisUrl + id/*, {headers: headers}*/);
     }
 
     assignStudent(thesisNumber: string, priority: string): Observable<any> {
