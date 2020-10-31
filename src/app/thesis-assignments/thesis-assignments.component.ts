@@ -36,10 +36,10 @@ export class ThesisAssignmentsComponent implements OnInit {
                 return 'Oczekiwanie na Twoją decyzję';
             }
             else if(!this.isSupervisorProposedThesisToThisStudent(thesis) && thesis.state != 'OWNED') {
-                return 'Oczekiwanie na decyzje ' + thesis.student;
+                return 'Oczekiwanie na decyzję ' + thesis.student;
             }
             else {
-                return 'Wybrales ta prace dyplomowa';
+                return 'Wybrałeś tę pracę dyplomową';
             }
         }
     }
