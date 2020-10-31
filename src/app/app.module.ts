@@ -7,6 +7,7 @@ import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { ThesesListModule } from './theses-list/theses-list.module';
 import { ThesisAssignmentsModule } from './thesis-assignments/thesis-assignments.module';
+import { ThesesSupervisorModule } from './theses-supervisor/theses-supervisor.module';
 import { ThesisDetailsModule } from './thesis-details/thesis-details.module';
 import { AuthInterceptor } from './shared/interceptors/auth-interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -29,6 +30,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
         ThesesListModule,
         ThesisDetailsModule,
         ThesisAssignmentsModule,
+        ThesesSupervisorModule,
         HttpClientModule,
         NgbModule,
     ],

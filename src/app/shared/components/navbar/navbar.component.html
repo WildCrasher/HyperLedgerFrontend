@@ -1,24 +1,25 @@
 <div class="navbar row">
-    <div *ngIf="authService.username" class="col-5">
-        <div class="row">
-            <div class="user col-7 d-none d-md-block navbar-title">
-                {{ authService.username }}
-            </div>
-        </div>
+    <div *ngIf="authService.username" class="col-2">
+        {{ authService.username }}
     </div>
 
     <div *ngIf="authService.username; then thenBLock else elseBlock"></div>
     <ng-template #thenBLock>
-        <div *ngIf="authService.userRole == 'supervisor'" class="col-2">
+        <div *ngIf="authService.userRole == 'supervisor'" class="col-3">
             <a [routerLink]="['thesis-add']">Dodaj pracę dyplomową</a>
         </div>
-        <div *ngIf="authService.userRole == 'student'" class="col-2">
+        <div *ngIf="authService.userRole == 'supervisor'" class="col-3">
+            <a [routerLink]="['theses-supervisor']">Twoje dodane prace dyplomowe</a>
+        </div>
+
+        <div *ngIf="authService.userRole == 'student'" class="col-6">
             <a [routerLink]="['thesis-assignments']">Twoja aktualna lista zapisow</a>
         </div>
+
         <div class="col-2">
             <a [routerLink]="['theses-list']">Lista prac dyplomowych</a>
         </div>
-        <div class="col-1">
+        <div class="col-2 text-right">
             <a [routerLink]="" (click)="logout()">Wyloguj</a>
         </div>
     </ng-template>

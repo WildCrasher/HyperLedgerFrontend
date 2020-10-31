@@ -1,0 +1,56 @@
+<div class="main-text">
+    Lista dostępnych prac dyplomowych dodanych przez Ciebie
+</div>
+<div class="container container-table">
+    <div class="row">
+        <div class="col-2">
+            Temat
+        </div>
+        <div class="col-2">
+            Data utworzenia
+        </div>
+        <div class="col-2">
+            Stan
+        </div>
+        <div class="col-2">
+            Student
+        </div>
+        <div class="col-2">
+            Liczba chetnych studentow
+        </div>
+        <div class="col-2">
+            Akcja
+        </div>
+    </div>
+    <div *ngIf="theses.length > 0; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <div class="row" *ngFor="let thesis of theses">
+            <div class="col-2">
+                {{thesis.topic | slice:0:10}} ...
+            </div>
+            <div class="col-2">
+                {{thesis.issueDateTime}}
+            </div>
+            <div class="col-2">
+                {{getState(thesis)}}
+            </div>
+            <div class="col-2">
+                {{thesis.student}}
+            </div>
+            <div class="col-2">
+                {{thesis.studentsAssigned.length}}
+            </div>
+            <div class="col-2">
+                <button class="button button-primary" (click)="onThesisDetails(thesis.thesisNumber)">Szczegóły</button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #elseBlock>
+        <div class="row">
+            <div *ngIf="!loading" class="col-12">
+                Brak dodanych prac dyplomowych
+            </div>
+            <div *ngIf="loading" class="col-12 spinner"></div>
+        </div>
+    </ng-template>
+</div>

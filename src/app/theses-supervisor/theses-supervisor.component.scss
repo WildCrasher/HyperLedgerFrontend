@@ -1,0 +1,44 @@
+@import "../../constants.scss";
+
+.row > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px $colorGrey;
+    border-right: none;
+    border-bottom: none;
+    background-color: $colorLightGrey;
+}
+
+.row > div:last-child {
+    border-right: solid 2px $colorGrey;
+}
+
+.row > div:first-child {
+    border-right: solid 2px $colorLightGreySecond;
+}
+
+.row {
+    width: 100%;
+    min-height: 60px;
+}
+
+.row:first-child > div {
+    font-weight: 600;
+}
+
+.row:last-child > div {
+    border-bottom: solid 2px $colorGrey;
+}
+
+.main-text {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+.container-table {
+    width: 1200px;
+}
