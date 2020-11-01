@@ -12,6 +12,15 @@
                 <app-input-message [input]="addThesisForm.get('topic')"></app-input-message>
             </div>
         </div>
+        <div class="form-group row">
+            <div class="col-6">
+                <label>Opis</label>
+            </div>
+            <div class="col-6">
+                <textarea type="text" formControlName="description"></textarea>
+                <app-input-message [input]="addThesisForm.get('description')"></app-input-message>
+            </div>
+        </div>
         <div class="form-group row margin-bottom">
             <div class="col-6">
                 <label>Numer pracy</label>

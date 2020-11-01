@@ -15,7 +15,7 @@ export class ThesisService {
     private getThesesUrl = 'api/thesis';
     private getThesisUrl = 'api/thesis/';
     private getThesisAssignmentsUrl = 'api/thesis/thesis-assignments';
-    private removeThesisUrl = 'api/thesis/delete';
+    private removeThesisUrl = 'api/thesis/delete/';
     private assignThesisUrl = 'api/thesis/assign';
     private chooseStudentUrl = 'api/thesis/choose-student';
     private revokeThesisUrl = 'api/thesis/revoke';
@@ -49,7 +49,7 @@ export class ThesisService {
         // let headers = new HttpHeaders();
         // headers.set('Access-Control-Allow-Origin', '*');
         // headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
-        return this.http.get<any>(this.url + this.removeThesisUrl + '/' + id/*, {headers: headers}*/);
+        return this.http.get<any>(this.url + this.removeThesisUrl + id/*, {headers: headers}*/);
     }
 
     assignStudent(thesisNumber: string, priority: string): Observable<any> {

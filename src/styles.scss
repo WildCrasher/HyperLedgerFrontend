@@ -139,6 +139,14 @@ input, select {
     height: 30px;
 }
 
+textarea {
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    background-color: $colorWhite;
+}
+
+
 label {
     width: 100%;
     text-align: center;

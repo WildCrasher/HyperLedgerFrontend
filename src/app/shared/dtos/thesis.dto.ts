@@ -1,6 +1,7 @@
 export interface ThesisDto {
     thesisNumber: string;
     topic: string;
+    description: string;
     issueDateTime: string;
     state: string;
     student: string;
@@ -12,6 +13,7 @@ export class ThesisDtoImpl implements ThesisDto {
 
     thesisNumber: string;
     topic: string;
+    description: string;
     issueDateTime: string;
     state: string;
     student: string;
